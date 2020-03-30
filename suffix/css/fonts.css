@@ -1,0 +1,27 @@
+/* kanit-300 - latin */
+@font-face {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Kanit Light'), local('Kanit-Light'),
+         url('../fonts/kanit-v5-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/kanit-v5-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* kanit-regular - latin */
+  @font-face {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Kanit Regular'), local('Kanit-Regular'),
+         url('../fonts/kanit-v5-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/kanit-v5-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* kanit-500 - latin */
+  @font-face {
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Kanit Medium'), local('Kanit-Medium'),
+         url('../fonts/kanit-v5-latin-500.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+         url('../fonts/kanit-v5-latin-500.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
