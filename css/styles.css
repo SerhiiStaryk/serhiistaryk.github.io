@@ -20,21 +20,29 @@ body {
     margin: 0 auto;
     background-color: #fff;
     display: flex;
+    flex-wrap: wrap;
     box-shadow: 5px 9px 20px rgba(0, 0, 0, 0.15);
-    max-width: 1280px;
 }
+
+
 
 .sidebar {
     background-color: #1e2939;
-    width: 370px;
+    width: 30%;
     padding: 40px 0;
 }
 
 .my-photo {
-    width: inherit;
+    background-image: url('../img/photo.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 384px;
+
 }
 
 .main-container {
+    width: 70%;
     padding: 110px 90px;
 }
 
@@ -193,7 +201,7 @@ body {
     margin-bottom: 15px;
 }
 
-.dots{
+.dots {
     font-style: normal;
     font-weight: 100;
     letter-spacing: 2.1px;
