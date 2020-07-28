@@ -21,16 +21,24 @@ body::after {
   width: 100%;
 }
 
+.address{
+  margin-bottom: 5px;
+}
+
+.info{
+  font-weight: bold;
+}
+
 .btn-group {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 3;
 }
 
 .container-fluid {
+  position: relative;
   border: 1px solid #000;
   height: 100vh;
   padding: 15px;
-  background-image: url(img/1747-1920x1080.jpg);
   background-size: 100% 100%;
 }
 
@@ -43,3 +51,15 @@ body::after {
   padding: 10px 10px 5px 10px;
   z-index: 2;
 }
+
+.note{
+  display: none;
+  position: absolute;
+  z-index: 100;
+  bottom: 25px;
+  right: 25px;
+  border: 1px solid #000;
+  padding: 5px;
+  background-color: #fff;
+}
+

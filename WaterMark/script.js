@@ -1,3 +1,5 @@
+
+
 /* button print document*/
 $(function () {
     $("#print-page").click(() => {
@@ -16,17 +18,32 @@ $('.btn-save').click(() => {
     let address = $('#addressFormControlInput').val()
     $('#new-address').text(address);
     $('.modal').modal('hide');
-   /*  $('#addressFormControlInput').val(''); */
-   /*  $('#editor').click(()=>{
-        let val = $("#editor :selected").text();
-        console.log(val);
-        $('.performer').text(val);
-    }) */
+    $('#print-page').prop('disabled', false);
+    /*  $('#addressFormControlInput').val(''); */
+    /*  $('#editor').click(()=>{
+         let val = $("#editor :selected").text();
+         console.log(val);
+         $('.performer').text(val);
+     }) */
 })
 
-$('#editor').change(()=>{
+$('#editor').change(() => {
     let val = $("#editor :selected").text();
-    console.log(val);
     $('.performer').text(val);
 })
 
+$('#scale').change(() => {
+    let val = $("#scale :selected").text();
+
+    if(val === '2000'){
+        $('.note').show();
+    } else{
+       $('.note').hide();
+    }
+
+    $('#this-text').text(
+                    `Копія топографо-геодезичних матеріалів з масштабу 1:${val}
+                     наявних в управлінні архітектури та урбаністики
+     `);
+     
+})

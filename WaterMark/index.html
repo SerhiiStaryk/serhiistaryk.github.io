@@ -11,16 +11,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <div class="container-fluid">
+    <div class="note">Картографічні матеріали станом на 2013</div>
     <div class="container-text">
-        <p class="text-justify">Копія з топографічного плану масштабу 1:500 з нанесеними червоними лініями наявного в управлінні архітектури та урбаністикии</p>
-        <p class="text-left">за адресою: <span id="new-address"></span></p>
+        <p id="this-text" class="text-left"><span></span></p>
+        <p class="text-left address">за адресою: <span id="new-address"></span></p>
+        <p class="info">для інформації</p>
         <p class="performer"></p>
     </div>
     <div class="btn-group btn-group-toggle m-3 position-relative" data-toggle="buttons">
+
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-sm d-print-none" data-toggle="modal"
             data-target="#editModal">Редагувати</button>
-        <button id="print-page" type="button" class="btn btn-info btn-sm d-print-none">Друкувати</button>
+        <button id="print-page" type="button" class="btn btn-info btn-sm d-print-none" disabled>Друкувати</button>
     </div>
 
     <!-- Modal -->
@@ -35,6 +38,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <select class="custom-select mb-3" id="scale">
+                        <option selected disabled>Виберіть масштаб</option>
+                        <option value="1">500</option>
+                        <option value="2">2000</option>
+                    </select>
                     <div class="form-group">
                         <label for="addressFormControlInput">Адреса</label>
                         <input type="text" class="form-control" id="addressFormControlInput"
@@ -48,8 +56,10 @@
                     </div>
                     <select class="custom-select mb-3" id="editor">
                         <option selected disabled>Виберіть виконавця</option>
-                        <option value="1">Головний спеціаліст відділу інженерних споруд, транспорту та геослужби</option>
-                        <option value="2">Провідний спеціаліст відділу інженерних споруд, транспорту та геослужби</option>
+                        <option value="1">Головний спеціаліст відділу інженерних споруд, транспорту та геослужби
+                        </option>
+                        <option value="2">Провідний спеціаліст відділу інженерних споруд, транспорту та геослужби
+                        </option>
                     </select>
                     <!-- <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="customCheck1">
