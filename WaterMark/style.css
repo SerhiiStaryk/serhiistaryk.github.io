@@ -13,7 +13,7 @@ body {
 body::after {
   content: "";
   background: url(img/watermark_small.png);
-  opacity: 0.2;
+  opacity: 0.3;
   top: 0;
   position: absolute;
   z-index: 1;
@@ -21,8 +21,9 @@ body::after {
   width: 100%;
 }
 
-.address{
+p{
   margin-bottom: 5px;
+  font-size: 14px;
 }
 
 .info{
@@ -40,6 +41,7 @@ body::after {
   height: 100vh;
   padding: 15px;
   background-size: 100% 100%;
+  padding: 0;
 }
 
 .container-text {
