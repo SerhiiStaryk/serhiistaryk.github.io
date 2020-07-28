@@ -17,8 +17,8 @@ body::after {
   top: 0;
   position: absolute;
   z-index: 1;
-  height: 100vh;
-  width: 200vw;
+  height: 100%;
+  width: 200%;
 }
 
 .btn-group {
