@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WaterMark v1.1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<div class="container-fluid">
+    <div class="container-text">
+        <p class="text-justify">Копія з топографічного плану масштабу 1:500 з нанесеними червоними лініями наявного в управлінні архітектури та урбаністикии</p>
+        <p class="text-left">за адресою: <span id="new-address"></span></p>
+        <p class="performer"></p>
+    </div>
+    <div class="btn-group btn-group-toggle m-3 position-relative" data-toggle="buttons">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm d-print-none" data-toggle="modal"
+            data-target="#editModal">Редагувати</button>
+        <button id="print-page" type="button" class="btn btn-info btn-sm d-print-none">Друкувати</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Вікно редагування</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="addressFormControlInput">Адреса</label>
+                        <input type="text" class="form-control" id="addressFormControlInput"
+                            placeholder="введіть адресу">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">виберіть план для друку</label>
+                        </div>
+                    </div>
+                    <select class="custom-select mb-3" id="editor">
+                        <option selected disabled>Виберіть виконавця</option>
+                        <option value="1">Головний спеціаліст відділу інженерних споруд, транспорту та геослужби</option>
+                        <option value="2">Провідний спеціаліст відділу інженерних споруд, транспорту та геослужби</option>
+                    </select>
+                    <!-- <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label" for="customCheck1">застосувати WaterMark</label>
+                    </div> -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-save">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

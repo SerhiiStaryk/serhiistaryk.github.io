@@ -1,0 +1,45 @@
+/* print page landscape */
+@media print {
+  @page {
+    size: landscape;
+  }
+}
+
+/* water mark style */
+body {
+  overflow: hidden;
+}
+
+body::after {
+  content: "";
+  background: url(img/watermark_small.png);
+  opacity: 0.2;
+  top: 0;
+  position: absolute;
+  z-index: 1;
+  height: 100vh;
+  width: 200vw;
+}
+
+.btn-group {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.container-fluid {
+  border: 1px solid #000;
+  height: 100vh;
+  padding: 15px;
+  background-image: url(img/1747-1920x1080.jpg);
+  background-size: 100% 100%;
+}
+
+.container-text {
+  position: relative;
+  margin: 0;
+  line-height: 18px;
+  width: 400px;
+  background: #fff;
+  padding: 10px 10px 5px 10px;
+  z-index: 2;
+}
