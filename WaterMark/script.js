@@ -2,18 +2,18 @@
 $(function () {
     $("#print-page").click(() => {
         window.print();
-    })
-})
+    });
+});
 
 /* change map for print */
 $('#customFile').change((event) => {
     //create pseudo url
     let url = URL.createObjectURL(event.target.files[0]);
     $('.container-fluid').css('background-image', `url(${url})`);
-})
+});
 /* button save in model window */
 $('.btn-save').click(() => {
-    let address = $('#addressFormControlInput').val()
+    let address = $('#addressFormControlInput').val();
     $('#new-address').text(address);
     $('.modal').modal('hide');
     $('#print-page').prop('disabled', false);
@@ -23,11 +23,11 @@ $('.btn-save').click(() => {
          console.log(val);
          $('.performer').text(val);
      }) */
-})
+});
 
 const note1 = 'Картографічні матеріали станом на 2013 р.';
 const note2013 = 'Станом на 2013 р.';
-const note2019 = 'Станом на 2019 р.'
+const note2019 = 'Станом на 2019 р.';
 
 function createText(val) {
     $('#this-text').text(
@@ -39,7 +39,7 @@ function createText(val) {
 $('#editor').change(() => {
     let val = $("#editor :selected").text();
     $('.performer').text(val);
-})
+});
 
 $('#scale').change(() => {
     let value = $("#scale :selected").text();
@@ -63,4 +63,4 @@ $('#scale').change(() => {
          `);
          $('.note').text(note2019).show();
     }
-})
+});
