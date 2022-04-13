@@ -309,12 +309,11 @@ td.filter:hover {
     word-break: break-all;
     word-wrap: break-word;
 }
-</style>
 
 @media screen and (max-width:470px) {
-    .geo__logo-wrap {
+    /* .geo__logo-wrap {
         display: none;
-    }
+    } */
 }
 
 .pagination {
