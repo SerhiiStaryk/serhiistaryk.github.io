@@ -77,7 +77,7 @@
 
 .ellipsis>a {
     display: block;
-    font-size: 16px;
+    font-size: 1em;
     color: #000;
     cursor: pointer;
     font-weight: 700;
@@ -125,7 +125,7 @@
 
 .openbtn {
     position: fixed;
-    right: -86px ;
+    right: -90px;
     font-size: 20px;
     cursor: pointer;
     background-color: var(--mainblue-b-w);
@@ -133,7 +133,7 @@
     padding: 10px 15px;
     border: none;
     border-top-left-radius: 100px;
-border-bottom-left-radius: 100px;
+    border-bottom-left-radius: 100px;
     transition: all 0.8s ease;
     z-index: 1;
 }
@@ -165,7 +165,6 @@ td {
     white-space: normal;
     word-break: keep-all;
     word-wrap: break-word;
-
 }
 
 .label-grey {
@@ -436,23 +435,32 @@ td {
 
 
 @media screen and (max-width:455px) {
-    .pagination>li>a{
-        margin: 0;
+    .pagination>li>a {
+        margin: 3px;
         font-size: 10px;
         line-height: 10px;
     }
 
-    .title-header{
+    .title-header {
         display: none;
     }
-    .wrapper{
+
+    .wrapper {
         margin-top: 75px;
     }
-    .header{
+
+    .header {
         height: auto;
     }
+
     .navbar-brand>.header__navbar_logo {
         display: none;
+    }
+}
+
+@media screen and (max-width:359px) {
+    .pagination>li>a {
+        margin: 1px;
     }
 }
 
