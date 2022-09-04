@@ -1,0 +1,421 @@
+.map-toolpanel .btn {
+    font-size: 14px
+}
+
+.map-toolpanel .dropdown-menu {
+    font-size: 14px
+}
+
+.map-filter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    right: 0;
+    z-index: 1003;
+    width: 40%;
+    background-color: #fff;
+    transition: all .5s ease
+}
+
+.map-filter.open {
+    left: 0;
+    transition: all .5s ease
+}
+
+.map-backdrop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1002;
+    display: none
+}
+
+.map-backdrop.open {
+    display: block
+}
+
+.map-filter__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px 10px;
+    border-bottom: 1px solid #e4e3e3
+}
+
+.map-filter__header .btn {
+    font-size: 14px
+}
+
+.map-filter__wrap {
+    padding: 15px;
+    overflow-y: scroll
+}
+
+.map-filter__content {
+    margin-top: 15px
+}
+
+.map-filter__checkbox {
+    display: flex;
+    align-items: center
+}
+
+.checkbox {
+    display: flex
+}
+
+.checkbox label {
+    font-size: 14px
+}
+
+.map-substrate {
+    position: absolute;
+    bottom: 185px;
+    left: 10px;
+    width: 100px;
+    height: 100px;
+    z-index: 999
+}
+
+.map-substrate-btn {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px
+}
+
+.map-substrate-btn:focus {
+    outline: 0
+}
+
+.map-substrate-btn img {
+    height: 70px;
+    width: 100%;
+    object-fit: cover
+}
+
+.map-substrate-content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 200px;
+    padding: 0 10px;
+    justify-content: space-between
+}
+
+.map-substrate-item {
+    width: 80px;
+    height: 80px;
+    text-align: center
+}
+
+.map-substrate-item p {
+    margin-bottom: 0
+}
+
+.map-substrate-item img {
+    width: 100%;
+    height: 60px;
+    object-fit: cover
+}
+
+.map-zoom-group {
+    position: absolute;
+    z-index: 999;
+    bottom: 185px;
+    background-color: #fff;
+    border: #ccc;
+    right: 10px
+}
+
+.panel-legend {
+    z-index: 1001;
+    bottom: 185px
+}
+
+img {
+    max-width: 100%;
+    height: auto
+}
+
+.map-parts {
+    display: flex;
+    justify-content: space-between
+}
+
+.map-half-part {
+    width: 50%
+}
+
+.content-left {
+    width: 50%;
+    background-color: #fff
+}
+
+.content-left.full-width .col-adaptive {
+    flex: 0 0 25%;
+    max-width: 25%
+}
+
+.content-left__top-menu {
+    min-height: 70px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #f4f4f4;
+    font-size: inherit
+}
+
+.content-left__select-view {
+    width: 170px;
+    font-size: 16px
+}
+
+.content-left__select-view .nav-tabs li a {
+    padding: 5px 10px;
+    color: #000
+}
+
+.content-left__view-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 20px
+}
+
+.map-switch-btn {
+    margin-left: auto
+}
+
+.content-left__search-results {
+    margin-left: auto;
+    margin-right: 20px;
+    font-size: 16px;
+    text-align: right
+}
+
+.content-left__filters-label {
+    width: 200px;
+    text-align: center
+}
+
+.content-left__main-title {
+    margin: 10px 0;
+    font-size: 20px;
+    line-height: 34px;
+    padding: 0 15px
+}
+
+.content-left__cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap
+}
+
+.content-left__wrap {
+    overflow-y: scroll;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 75vh
+}
+
+.content-left__card {
+    border: 1px solid #dedede;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: 100%;
+    width: 100%
+}
+
+.content-left__card:hover {
+    box-shadow: 0 2px 4px 0 #bdbdbd
+}
+
+.content-card__title {
+    border-bottom: 1px solid #dedede;
+    align-items: center;
+    padding: .75rem
+}
+
+.content-card__text {
+    padding: 10px;
+    font-size: 14px
+}
+
+.full-width {
+    width: 100%
+}
+
+@media only screen and (max-width:992px) {
+    .content-left.full-width .col-adaptive {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .content-left {
+        width: 100%
+    }
+
+    .content-left.full-width .col-adaptive {
+        flex: 0 0 50%;
+        max-width: 50%
+    }
+
+    .map-half-part {
+        width: 0
+    }
+
+    .map-switch-btn {
+        display: none
+    }
+
+    .map-right-toolbar {
+        display: none
+    }
+}
+
+@media only screen and (max-width:460px) {
+    .content-left.full-width .col-adaptive {
+        flex: 0 0 100%;
+        max-width: 100%
+    }
+}
+
+.leaflet-top .leaflet-control {
+    top: 0
+}
+
+.map-config-wrap .map-inner-wrap .map_layer .btn {
+    top: 50px
+}
+
+.map-config-wrap .map-inner-wrap .map_layer .map-layers-group-item {
+    top: 50px
+}
+
+.map-search-input-group {
+    position: absolute;
+    z-index: 998;
+    width: 400px;
+    top: 10px;
+    left: 10px;
+    display: flex
+}
+
+.map-search-input-group .form-control {
+    height: 40px
+}
+
+.input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap
+}
+
+.map-search {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0
+}
+
+.map-group-btn .btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    padding: 7px 10px;
+    background-color: #fff;
+    border: 1px solid #e7eaec
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    display: flex;
+    flex-direction: column
+}
+
+.wrapper {
+    flex-grow: 1;
+    padding: 0
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1003;
+    height: 87px;
+    margin-bottom: 0
+}
+
+.header .navbar-brand {
+    height: 100%
+}
+
+.header h5 {
+    font-size: 20px
+}
+
+.header a {
+    font-size: 16px
+}
+
+.header .btn {
+    border-radius: 5px;
+    padding: 6px 12px
+}
+
+.map-toolpanel {
+    background-color: #fff;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    position: relative;
+    z-index: 999
+}
+
+#map-toolbar {
+    width: 45px;
+    top: 0;
+    bottom: 25px;
+    right: 0;
+    left: auto;
+    position: absolute;
+    z-index: 1001
+}
+
+#map-toolbar .jarviswidget>div {
+    border: none
+}
+
+.map-layers-group-item.map-layers-left-panel {
+    top: 100px
+}
+
+.map-search {
+    display: flex;
+    width: 300px;
+    flex-direction: row-reverse
+}
+
+.map-search button,
+.map-search input {
+    font-size: 14px
+}

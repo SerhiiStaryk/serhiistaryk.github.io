@@ -1,0 +1,360 @@
+.JColResizer {
+    table-layout: fixed;
+}
+
+.JColResizer>tbody>tr>td,
+.JColResizer>tbody>tr>th {
+    overflow: hidden
+}
+
+.JPadding>tbody>tr>td,
+.JPadding>tbody>tr>th {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.JCLRgrips {
+    height: 0px;
+    position: relative;
+}
+
+.JCLRgrip {
+    margin-left: -5px;
+    position: absolute;
+    z-index: 5;
+}
+
+.JCLRgrip .JColResizer {
+    position: absolute;
+    background-color: red;
+    filter: alpha(opacity=1);
+    opacity: 0;
+    width: 10px;
+    height: 100%;
+    cursor: col-resize;
+    top: 0px
+}
+
+.JCLRLastGrip {
+    position: absolute;
+    width: 1px;
+}
+
+.JCLRgripDrag {
+    border-left: 1px dotted black;
+}
+
+.JCLRFlex {
+    width: auto !important;
+}
+
+.JCLRgrip.JCLRdisabledGrip .JColResizer {
+    cursor: default;
+    display: none;
+}
+
+.vs__filter-section__sidebar {
+    background-color: #FFF;
+    color: #303133;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.vs__filter-section__sidebar .filter-simple-wrap .filter-item-block {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.inline-cleaner {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.vs__filter-section__sidebar .inline-cleaner {
+    justify-content: space-between;
+    right: 20px;
+    top: -20px;
+}
+
+.vs__filter-section__sidebar .inline-cleaner .el-divider {
+    display: none;
+}
+
+.vs-filter.filter-simple-wrap .el-form-item__label {
+    padding: unset;
+}
+
+.vs-filter__checkbox__color {
+    width: 12px;
+    border-radius: 2px;
+    height: 12px;
+    float: left;
+    margin-right: 2px;
+    background-color: var(--bgColor);
+}
+
+.el-dropdown-menu .el-checkbox {
+    margin-right: 0;
+}
+
+.el-dropdown-menu .el-checkbox__label {
+    width: 100%;
+}
+
+.vs-filter__check-ttl {
+    max-width: 400px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vs__checkbox__drop {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.filter-checkbox__inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-checkbox {
+    margin-right: unset;
+    min-height: 24px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-checkbox:last-child {
+    margin-bottom: unset;
+}
+
+.filter-checkbox .el-checkbox__label {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter-checkbox .filter-checkbox__label {
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.filter-checkbox .filter-checkbox__label span {
+    max-width: calc(100% - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.filter-checkbox .count {
+    max-width: 18%;
+}
+
+.vs-checkbox-sort {
+    margin-bottom: 5px;
+}
+
+.vs-checkbox-sort-btn {
+    margin-right: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-shrink: 0;
+}
+
+.vs-checkbox-sort-btn:last-child {
+    margin-right: unset;
+}
+
+.vs-checkbox-sort-btn:hover svg path {
+    stroke: #1989FA !important;
+}
+
+.checkbox__more-btn {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    margin-left: 15px;
+    transition: 0.2s;
+    color: #7D8087;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.checkbox__more-btn:hover {
+    color: #1989FA;
+    transition: 0.2s;
+}
+
+.el-date-editor--daterange .null {
+    display: none;
+}
+
+.el-range-editor.el-input__inner {
+    padding: 3px 5px;
+}
+
+.vs-filter-date {
+    display: flex;
+}
+
+.vs-filter-date__quick-select {
+    width: 400px;
+    padding: 0 10px;
+}
+
+.vs-filter-date__interval {
+    display: flex;
+    width: 100%;
+}
+
+.vs-filter-date__interval-date:first-child .el-input__inner {
+    border-radius: unset;
+}
+
+.vs-filter-date__interval-date:last-child .el-input__inner {
+    border-top-left-radius: unset;
+    border-bottom-left-radius: unset;
+}
+
+.vs-filter-date__common-option {
+    width: 50%;
+    padding: 5px 0;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.vs-filter-date__common-option:hover {
+    text-decoration: underline;
+}
+
+.vs-filter-date__common-option--active {
+    color: #409EFF;
+    font-weight: bold;
+}
+
+.vs-filter-date__preview {
+    background-color: #fff;
+    border-top: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
+    border-right: 1px solid #d0d0d0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 32px;
+}
+
+.vs-filter-date__preview>span {
+    display: block;
+    min-width: 100px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.date-custom>.el-input__inner {
+    text-align: center;
+    padding: 0;
+}
+
+.date-custom .el-input__suffix {
+    right: -3px;
+    top: 1px;
+}
+
+.el-input-number.is-controls-right .el-input__inner {
+    padding-left: 10px !important;
+    padding-right: 35px !important;
+}
+
+[data-v-11] .inline-filter__inner .el-search {
+    font-size: 12px;
+    max-width: 150px;
+}
+
+.JCLRgrips {
+    position: inherit !important;
+}
+
+.breadcrumb>li:last-child {
+    font-weight: 600;
+}
+
+.tooltip-inner {
+    max-width: 400px;
+}
+
+td.filter:hover {
+    background: lightgreen;
+}
+
+.checkbox input[type="checkbox"].minus:checked+label::after,
+.checkbox input[type="radio"].minus:checked+label::after {
+    font-family: "FontAwesome";
+    content: " 05e";
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+@media screen and (max-width:470px) {
+    /* .geo__logo-wrap {
+        display: none;
+    } */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination>li>a {
+    cursor: pointer;
+    display: FLEX;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    color: #415998;
+    text-decoration: none;
+    background-color: #E3E7F2;
+    border: none;
+    border-radius: 50%;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.pagination>li.active>a {
+    background-color: #415998;
+    color: #fff;
+    cursor: pointer !important;
+}
+
+.pagination>li:first-child>a,
+.pagination>li:first-child>span {
+    border-radius: 50%;
+}
+
+.pagination>li:last-child>a,
+.pagination>li:last-child>span {
+    border-radius: 50%;
+}

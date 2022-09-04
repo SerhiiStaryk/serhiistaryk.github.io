@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html class="gt-ie8" xmlns="http://www.w3.org/1999/xhtml" lang="uk-UA">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<base href="." />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<link rel="stylesheet" href="./css/style_account.css" />
+	<link rel="stylesheet" href="./css/map_style.css" />
+	<link rel="stylesheet" href="./css/element_softpro.css">
+	<link rel="stylesheet" href="./css/main.css" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+		integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+		crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="./css/mbk.css ">
+
+	<title>Мої заявки</title>
+</head>
+
+<body class="temp-all" data-new-gr-c-s-check-loaded="14.1056.0" data-gr-ext-installed="">
+
+	<!-- Header start -->
+
+	<header class="header bg-white shadow-sm" id="header">
+		<nav class="navbar navbar-expand-lg navbar-light bg-white">
+			<!-- <a href=" #" class="geo__logo-wrap">
+				<img src="./images/logo-region.png" alt="logo-region" class="logo-region logo-region-black" />
+			</a> -->
+
+			<a href="#" class="navbar-brand d-flex align-items-center text-dark">
+				<img src="./images/logo_geo.jpg" alt="logo" class="header__navbar_logo" />
+				<h5 class="font-weight-normal ml-4"><span class="title-header">Кабінет геодезиста - </span>Прізвище І.П.</h5>
+			</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse bg-white" id="navbarNav">
+				<ul class="navbar-nav  ml-auto">
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="#">Мої заявки</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="#">Профіль</a>
+					</li>
+					<li class="nav-item ">
+						<a class="nav-link text-dark" href="#">Налаштування доступу</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="#">
+							<i class="fa fa-sign-out" aria-hidden="true"></i>
+							<span class="ml-1">Вийти</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<!-- Header end -->
+
+	<!-- Main start -->
+
+	<div class="wrapper">
+
+		<div class="page-profile">
+			<main class="main">
+				<div class="container-fluid">
+					<div class="content">
+
+
+
+						<div class="pos-f-t bg-white">
+							<div id="mySidepanel" class="sidepanel">
+								<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+								<!-- ---------------------------------------------------------------------------------------- -->
+
+								<!-- Filter start -->
+								<div class="filter p-4">
+									<div>
+										<div class="vs__filter-section__wrap vs__filter-section__sidebar">
+											<div class="vs-filter filter-simple-wrap" style="position: relative">
+												<div class="el-form--label-top">
+
+													<!-- Status start -->
+													<div class="sidebar-status mb-5">
+														<label class="el-form-item__label">
+															<span>Статус</span>
+														</label>
+														<label class="el-checkbox filter-checkbox" style="margin-right: 0px; z-index: 1;">
+															<span class="el-checkbox__input">
+																<span class="el-checkbox__inner"></span>
+																<input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="5">
+															</span>
+															<span class="el-checkbox__label">
+																<span class="d-flex filter-checkbox__label" style="font-size: 14px;">
+																	<span class=" m-r-sm"
+																		style="width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; background: green;">
+																	</span>
+																	<span title="внесено в ЄЦТО">внесено в ЄЦТО</span>
+																</span>
+															</span>
+														</label>
+
+														<label class="el-checkbox filter-checkbox" style="margin-right: 0px; z-index: 1;">
+															<span class="el-checkbox__input"><span class="el-checkbox__inner"></span>
+																<input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="1">
+															</span>
+															<span class="el-checkbox__label">
+																<span class="d-flex filter-checkbox__label" style="font-size: 14px;">
+																	<span class=" m-r-sm"
+																		style="width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; background: gray;">
+																	</span>
+																	<span title="на видачу вихідних даних" class=" ">на видачу вихідних
+																		даних</span>
+																</span>
+															</span>
+														</label>
+
+														<label class="el-checkbox filter-checkbox" style="margin-right: 0px; z-index: 1;">
+															<span class="el-checkbox__input">
+																<span class="el-checkbox__inner"></span>
+																<input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="3">
+															</span>
+															<span class="el-checkbox__label">
+																<span class="d-flex filter-checkbox__label" style="font-size: 14px;">
+																	<span class=" m-r-sm"
+																		style="width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; background: blue;">
+																	</span>
+																	<span title="перевірене" class=" ">перевірене</span>
+																</span>
+															</span>
+														</label>
+
+														<label class="el-checkbox filter-checkbox" style="margin-right: 0px; z-index: 1;">
+															<span class="el-checkbox__input">
+																<span class="el-checkbox__inner"></span>
+																<input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="2">
+															</span>
+															<span class="el-checkbox__label"><span class="d-flex filter-checkbox__label"
+																	style="font-size: 14px;">
+																	<span class=" m-r-sm"
+																		style="width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; background: orange;">
+																	</span>
+																	<span title="видано вихідні дані" class=" ">видано вихідні
+																		дані</span>
+																</span>
+															</span>
+														</label>
+
+														<label class="el-checkbox filter-checkbox" style="margin-right: 0px; z-index: 1;">
+															<span class="el-checkbox__input">
+																<span class="el-checkbox__inner"></span>
+																<input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="4">
+															</span><span class="el-checkbox__label">
+																<span class="d-flex filter-checkbox__label" style="font-size: 14px;">
+																	<span class=" m-r-sm"
+																		style="width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; background: red;">
+																	</span>
+																	<span title="скасовані заявки" class=" ">скасовані заявки</span>
+																</span>
+															</span>
+														</label>
+
+														<label class="el-checkbox filter-checkbox" style="margin-right: 0px; z-index: 1;">
+															<span class="el-checkbox__input">
+																<span class="el-checkbox__inner"></span>
+																<input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="7">
+															</span>
+															<span class="el-checkbox__label">
+																<span class="d-flex filter-checkbox__label" style="font-size: 14px;">
+																	<span class=" m-r-sm"
+																		style="width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; background: brown;">
+																	</span>
+																	<span title="Резерв" class=" ">Резерв</span>
+																</span>
+															</span>
+														</label>
+
+														<label class="el-checkbox filter-checkbox" style="margin-right: 0px; z-index: 1;">
+															<span class="el-checkbox__input">
+																<span class="el-checkbox__inner">
+
+																</span>
+																<input type="checkbox" aria-hidden="false" class="el-checkbox__original" value="6">
+															</span>
+															<span class="el-checkbox__label">
+																<span class="d-flex filter-checkbox__label" style="font-size: 14px;">
+																	<span class=" m-r-sm"
+																		style="width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; background: purple;">
+																	</span>
+																	<span title="На перевірці" class=" ">На перевірці</span>
+																</span>
+															</span>
+														</label>
+													</div>
+													<!-- Status end -->
+
+													<!-- Filter info start -->
+													<div class="sidebar-info">
+														<!-- Sidebar number application start-->
+														<div>
+															<label class="el-form-item__label">
+																<span>Номер звернення</span>
+															</label>
+
+															<div class="filter-item-block">
+																<div class="el-search el-input el-input--small el-input--suffix">
+																	<input type="text" autocomplete="off" placeholder="Номер звернення"
+																		class="el-input__inner" />
+																	<span class="el-input__suffix">
+																		<span class="el-input__suffix-inner">
+																			<i class="el-input__icon el-icon-search">
+																			</i>
+																		</span>
+																	</span>
+																</div>
+															</div>
+														</div>
+														<!-- Sidebar number application end-->
+														<!-- Sidebar sеttlements start-->
+														<div>
+															<label class="el-form-item__label">
+																<span>Населений пункт</span>
+															</label>
+															<div class="filter-item-block">
+																<div class="el-search el-input el-input--small el-input--suffix">
+																	<input type="text" autocomplete="off" placeholder="Населений пункт"
+																		class="el-input__inner" />
+																	<span class="el-input__suffix">
+																		<span class="el-input__suffix-inner">
+																			<i class="el-input__icon el-icon-search">
+																			</i>
+																		</span>
+																	</span>
+																</div>
+															</div>
+														</div>
+														<!-- Sidebar sеttlements    end-->
+														<!-- Sidebar  adress start-->
+														<div>
+															<label class="el-form-item__label">
+																<span>Адреса</span>
+															</label>
+															<div class="filter-item-block">
+																<div class="el-search el-input el-input--small el-input--suffix">
+																	<input type="text" autocomplete="off" placeholder="Адреса" class="el-input__inner" />
+																	<span class="el-input__suffix">
+																		<span class="el-input__suffix-inner">
+																			<i class="el-input__icon el-icon-search">
+																			</i>
+																		</span>
+																	</span>
+																</div>
+															</div>
+														</div>
+														<!-- Sidebar  adress end-->
+
+														<!-- Sidebar  position start-->
+														<div>
+															<label class="el-form-item__label">
+																<span>Місцезнаходження</span>
+															</label>
+															<div class="filter-item-block">
+																<div class="el-search el-input el-input--small el-input--suffix">
+																	<input type="text" autocomplete="off" placeholder="Місцезнаходження"
+																		class="el-input__inner" />
+																	<span class="el-input__suffix">
+																		<span class="el-input__suffix-inner">
+																			<i class="el-input__icon el-icon-search"></i>
+																		</span>
+																	</span>
+																</div>
+															</div>
+														</div>
+														<!-- Sidebar  position end-->
+													</div>
+
+													<!-- Filter info end -->
+
+													<!-- Sidebar dates start -->
+													<div class="sidebar-dates">
+														<!-- Sidebar date of application acceptance start-->
+														<div>
+															<label class="el-form-item__label">
+																<span>Дата прийому заявки</span>
+															</label>
+															<div class="vs-filter-date filter-item-block">
+																<div class="d-flex">
+																	<div class="el-dropdown">
+																		<button type="button" class="el-dropdown-selfdefine"
+																			style="border: 1px solid rgb(208, 208, 208);	border-radius: 4px;">
+																			<i class="el-icon-date"></i>
+																		</button>
+																	</div>
+																	<div class="vs-filter-date__interval">
+																		<div
+																			class="el-date-editor el-range-editor el-input__inner el-date-editor--daterange el-range-editor--small">
+																			<i class="el-input__icon el-range__icon null"></i>
+																			<input autocomplete="off" class="el-range-input" />
+																			<span class="el-range-separator">-</span>
+																			<input autocomplete="off" class="el-range-input" />
+																			<i class="el-input__icon el-range__close-icon"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<!-- Sidebar date of application acceptance end-->
+
+														<!-- Sidebar date of issue of data start-->
+														<div>
+															<label class="el-form-item__label">
+																<span>Дата видачі даних</span>
+															</label>
+															<div class="vs-filter-date filter-item-block">
+																<div class="d-flex">
+																	<div class="el-dropdown">
+																		<button type="button" class="el-dropdown-selfdefine"
+																			style="border: 1px solid rgb(208, 208, 208);	border-radius: 4px;">
+																			<i class="el-icon-date"></i>
+																		</button>
+
+																	</div>
+																	<div class="vs-filter-date__interval">
+																		<div
+																			class="el-date-editor el-range-editor el-input__inner el-date-editor--daterange el-range-editor--small">
+																			<i class="el-input__icon el-range__icon null"></i>
+																			<input autocomplete="off" class="el-range-input" />
+																			<span class="el-range-separator">-</span>
+																			<input autocomplete="off" class="el-range-input" />
+																			<i class="el-input__icon el-range__close-icon"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														<!-- Sidebar date of issue of data end-->
+														<!-- Sidebar date of shooting start-->
+														<div>
+															<label class="el-form-item__label">
+																<span>Дата
+																	внесення в ЄЦТО</span>
+															</label>
+															<div class="vs-filter-date filter-item-block">
+																<div class="d-flex">
+																	<div class="el-dropdown">
+																		<button class="el-dropdown-selfdefine"
+																			style="border: 1px solid rgb(208, 208, 208);border-radius: 4px;">
+																			<i class="el-icon-date"></i>
+																		</button>
+																	</div>
+																	<div class="vs-filter-date__interval">
+																		<div
+																			class="el-date-editor el-range-editor el-input__inner el-date-editor--daterange el-range-editor--small">
+																			<i class="el-input__icon el-range__icon null"></i>
+																			<input autocomplete="off" class="el-range-input" />
+																			<span class="el-range-separator">-</span>
+																			<input autocomplete="off" class="el-range-input" />
+																			<i class="el-input__icon el-range__close-icon"></i>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<!-- Sidebar date of shooting end-->
+													</div>
+													<!-- Sidebar dates end -->
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Filter end -->
+
+
+								<!-- ---------------------------------------------------------------------------------------- -->
+							</div>
+							<div class="d-flex justify-content-between">
+								<button class="openbtn" onclick="openNav()">
+									<i class="fa fa-arrow-left"></i>   Фільтри</button>
+							</div>
+						</div>
+
+
+						<div class="d-flex justify-content-start border-bottom flex-wrap">
+							<div style="margin-right: 15px">
+								<span>Звернень: </span><strong>466</strong>
+							</div>
+							<div style="margin-right: 15px">
+								<span>На видачу: </span><strong>2</strong>
+							</div>
+							<div style="margin-right: 15px">
+								<span>Видано: </span><strong>7</strong>
+							</div>
+							<div style="margin-right: 15px">
+								<span>Перевірене: </span><strong>5</strong>
+							</div>
+							<div style="margin-right: 15px">
+								<span>Скасовано: </span><strong>38</strong>
+							</div>
+							<div style="margin-right: 15px">
+								<span>Внесено в ЄЦТО: </span><strong>412</strong>
+							</div>
+							<div style="margin-right: 15px">
+								<span>На перевірці: </span><strong>1</strong>
+							</div>
+							<div style="margin-right: 15px">
+								<span>Резерв: </span><strong>1</strong>
+							</div>
+						</div>
+
+						<div class="datatable-tools m-b-sm d-flex justify-content-between flex-wrap">
+
+							<!-- Progress bar start -->
+							<div class="progress-wrapper">
+								<span class="m-0">Активна площа:</span>
+								<div class="progress">
+									<div class="progress-bar progress-bar_bg-color" style="width: 75%;">300 га</div>
+								</div>
+							</div>
+
+							<!-- Progress bar end -->
+
+							<div class="controls d-flex justify-content-between align-items-end">
+
+								<div class="input-search">
+									<div class="input-group pull-left input-group-sm">
+										<span class="input-group-addon"><i class="fa fa-search"></i></span>
+										<input class="form-control" placeholder="номер знімання" />
+									</div>
+								</div>
+
+								<div class="d-flex mr-2 ml-2">
+									<div class="dataTables_info d-flex align-items-center">
+										Показує 1- з 466
+									</div>
+
+									<div class="btn-group mr-1">
+										<div class="input-group pull-left input-group-sm m-l-xs" style="width: auto">
+											<a class="dropdown-toggle btn btn-light btn-sm" data-toggle="dropdown">16</a>
+											<ul class="dropdown-menu">
+												<li>
+													<a>16</a>
+												</li>
+												<li>
+													<a>32</a>
+												</li>
+												<li>
+													<a>48</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="btn-group mr-1">
+										<a class="dropdown-toggle btn btn-light btn-sm" data-toggle="dropdown"><i class="fa fa-table"></i>
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<div class="checkbox m-xs">
+													<input type="checkbox" id="oid_in1" />
+													<label for="oid_in1">№</label>
+												</div>
+											</li>
+											<li>
+												<div class="checkbox m-xs">
+													<input type="checkbox" id="address1" />
+													<label for="address1">Адреса</label>
+												</div>
+											</li>
+											<li>
+												<div class="checkbox m-xs">
+													<input type="checkbox" id="status1" />
+													<label for="status1">Статус </label>
+												</div>
+											</li>
+											<li>
+												<div class="checkbox m-xs">
+													<input type="checkbox" id="topo_znim1" />
+													<label for="topo_znim1">Вид робіт</label>
+												</div>
+											</li>
+											<li>
+												<div class="checkbox m-xs">
+													<input type="checkbox" id="date_in1" />
+													<label for="date_in1">Дата</label>
+												</div>
+											</li>
+											<li>
+												<div class="checkbox m-xs">
+													<input type="checkbox" id="area1" />
+													<label for="area1">Площа, ГА</label>
+												</div>
+											</li>
+											<li>
+												<div class="checkbox m-xs">
+													<input type="checkbox" id="files1" />
+													<label for="files1">Матеріали зйомки</label>
+												</div>
+											</li>
+											<li>
+												<div class="checkbox m-xs">
+													<input type="checkbox" id="note_text1" />
+													<label for="note_text1">Коментар</label>
+												</div>
+											</li>
+											<li>
+												<div class="checkbox m-xs">
+													<input type="checkbox" id="pidpus1" />
+													<label for="pidpus1">Підпис</label>
+												</div>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<a href="#">Оновити</a>
+											</li>
+										</ul>
+									</div>
+
+									<div class="btn-group mr-1">
+										<a class="dropdown-toggle btn btn-light btn-sm" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a target="_blank" href="#">
+													<i class="fa fa-file-code-o"></i>
+													&nbsp;&nbsp;Зберегти
+													CSV
+												</a>
+											</li>
+											<li>
+												<a target="_blank" href="#"><i class="fa fa-file-excel-o"></i>
+													&nbsp;&nbsp;Зберегти XLS
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<a class="btn dataset__card-link">
+									<i class="fa fa-plus btn-icon"></i>
+									Подати заявку
+								</a>
+							</div>
+						</div>
+
+						<!-- table start -->
+						<div class="table-responsive mb-5">
+							<table class="table no-margin table-striped table-bordered dataTable table-hover small JColResizer">
+								<thead class="text-center">
+									<tr>
+										<th style="width: 6%;">
+											<div class="th-title">№</div>
+										</th>
+										<th style="width: 9%;">
+											<div class="th-title">Адреса</div>
+										</th>
+										<th style="width: 10%;">
+											<div class="th-title">Статус</div>
+										</th>
+										<th style="width: 10%;">
+											<div class="th-title">Вид робіт</div>
+										</th>
+										<th style="width: 10%;">
+											<div class="th-title">Дата</div>
+										</th>
+										<th style="width:10%">
+											<div class="th-title">Матеріали знімання</div>
+										</th>
+										<th style="width: 15%">
+											<div class="th-title">Коментар</div>
+										</th>
+										<th style="width: 10%">
+											<div class="th-title">Підпис</div>
+										</th>
+									</tr>
+								</thead>
+								<!-- Table body start -->
+								<tbody>
+
+									<tr>
+										<td>
+											<div class="ellipsis">
+												<a href="#">202200138</a>
+												<span class="label label-check label-grey">
+													Вихідні дані
+												</span>
+											</div>
+										</td>
+										<td>
+
+											<b>Місцезнаходження:</b> пров. 2-ий
+											Заозерний, 4
+										</td>
+										<td>
+
+											Перевірив:
+											<br />
+											<button title="Скасувати заявку" class="btn btn-outline-danger btn-sm button-decline">
+												Скасувати заявку
+											</button>
+											<br />
+										</td>
+										<td>Топографічне
+											знімання
+										</td>
+										<td>
+											Дата формування заявки: 17.01.2022
+										</td>
+										<td>
+											<div class="text-center"></div>
+										</td>
+										<td></td>
+										<td>...</td>
+									</tr>
+
+									<tr>
+										<td>
+											<div class="ellipsis">
+												<a href="#">202200137</a>
+												<span class="label label-check label-brown">Резерв</span>
+											</div>
+										</td>
+										<td>
+											<b>Адреса:</b> Личаківська
+										</td>
+										<td>
+
+											Перевірив:
+										</td>
+										<td>Топографічне
+											знімання
+										</td>
+										<td>
+											Дата формування заявки: 17.01.2022
+										</td>
+										<td>
+											<div class="text-center"></div>
+										</td>
+										<td></td>
+										<td>...</td>
+									</tr>
+
+									<tr>
+										<td>
+											<div class="ellipsis">
+												<a href="#">202200104</a>
+												<span class="label label-check label-purple">
+													На перевірці
+												</span>
+											</div>
+										</td>
+										<td>
+											<b>Адреса:</b> Кульпарківська
+										</td>
+										<td>
+											Перевірив:<br />
+											<b>Романюк Володимир</b>
+
+										</td>
+										<td>Топографічне знімання
+										</td>
+										<td>
+											Дата формування заявки: 13.01.2022<br />
+											Видано вихідні дані: 13.01.2022<br />
+											На перевірці: 08.02.2022
+										</td>
+										<td>
+											<div class="text-center">
+												<a class="btn dataset__card-link btn-xs pull-center mb-3" href="#">
+													<i class="fa fa-download btn-icon"></i>
+													Вихідні дані
+												</a>
+												<a class="btn dataset__card-link btn-xs" href="#">
+													<i class="fa fa-download btn-icon"></i>
+													На перевірці
+												</a>
+											</div>
+										</td>
+										<td></td>
+										<td>...</td>
+									</tr>
+
+									<tr>
+										<td>
+											<div class="ellipsis">
+												<a href="#">
+													202200103
+												</a>
+												<span class="label label-check label-orange">
+													Видано
+												</span>
+											</div>
+										</td>
+										<td>
+											<b>Адреса:</b> Кульпарківська
+										</td>
+										<td>
+											Перевірив:<br />
+											<b>Погорілець Володимир</b>
+											<br />
+											<button title="Скасувати заявку" class="btn btn-outline-danger btn-sm button-decline">
+												Скасувати заявку
+											</button>
+											<br />
+										</td>
+										<td>
+											Топографічне знімання
+										</td>
+										<td>
+											Дата формування заявки: 13.01.2022<br />
+											Видано вихідні дані: 13.01.2022
+										</td>
+										<td>
+											<div class="text-center">
+												<a class="btn dataset__card-link btn-xs pull-center mb-3" href="#">
+													<i class="fa fa-download btn-icon"></i>
+													Вихідні дані
+												</a>
+												<a class="btn btn-sm dataset__card-link" title="Завантажити матеріали зйомки">
+													<i class="fa fa-download btn-icon"></i>
+													Завантажити знімання
+												</a>
+											</div>
+										</td>
+										<td></td>
+										<td>...</td>
+									</tr>
+
+									<tr>
+										<td>
+											<div class="ellipsis">
+												<a href="#">202200091</a>
+												<span class="label label-check label-green">
+													Внесено в ЄЦТО
+												</span>
+											</div>
+										</td>
+										<td>
+
+											<b>Адреса:</b> Різні, пл. 6
+										</td>
+										<td>
+											Перевірив:<br />
+											<b>Погорілець Володимир</b>
+										</td>
+										<td>Топографічне
+											знімання</td>
+										<td>
+											Дата формування заявки: 12.01.2022
+											<br />Видано вихідні дані: 13.01.2022
+											<br />На перевірці: 13.01.2022
+											<br />Здане знімання: 13.01.2022
+											<br />Внесення в ЄЦТО: 13.01.2022
+										</td>
+										<td>
+											<div class="text-center">
+												<a class="btn dataset__card-link btn-xs pull-center mb-3" href="#">
+													<i class="fa fa-download btn-icon"></i>
+													Вихідні дані
+												</a>
+												<a class="btn dataset__card-link btn-xs pull-center mb-3" href="#">
+													<i class="fa fa-download btn-icon"></i>
+													На перевірці
+												</a>
+												<a class="btn dataset__card-link btn-xs pull-center" href="#">
+													<i class="fa fa-download btn-icon"></i>
+													Перевірений файл знімання
+												</a>
+											</div>
+										</td>
+										<td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et architecto
+											suscipit maxime ipsam beatae rem quisquam soluta doloremque maiores ratione
+											dicta, enim delectus adipisci consectetur cum obcaecati vel sit quod molestiae
+											magnam autem. Porro dolorum maiores, fugit cupiditate quis unde?</td>
+										<td>Підписант І.П.</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="ellipsis">
+												<a href="#">202200090</a>
+												<span class="label label-check label-blue">Перевірено</span>
+											</div>
+										</td>
+										<td>
+
+											<b>Адреса:</b> Темницьких 67в
+										</td>
+										<td>
+
+											Перевірив:
+
+											<br /> <b>Тестевич Андрій</b>
+										</td>
+										<td>Топографічне
+											знімання</td>
+										<td>
+											Дата формування заявки: 12.01.2022
+											<br />Видано вихідні дані: 13.01.2022
+											<br />На перевірці: 16.01.2022
+											<br />Здане знімання: 17.01.2022
+										</td>
+										<td>
+											<div class="text-center">
+												<a class="btn dataset__card-link btn-xs pull-center mb-3" href="#">
+													<i class="fa fa-download btn-icon"></i>
+													Вихідні дані
+												</a>
+												<a class="btn dataset__card-link btn-xs pull-center mb-3" href="#">
+													<i class="fa fa-download btn-icon"></i>
+													На перевірці
+												</a>
+												<a class="btn dataset__card-link btn-xs pull-center" href="#">
+													<i class="fa fa-download btn-icon"></i>
+													Перевірений файл знімання
+												</a>
+											</div>
+										</td>
+										<td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi adipisci nihil
+											provident vitae tempore id voluptates doloremque. Delectus, alias consequuntur,
+											suscipit mollitia cupiditate eveniet porro, cum pariatur quia ex praesentium.
+										</td>
+										<td>Підписант П.І.</td>
+									</tr>
+
+								</tbody>
+								<!-- Table body end -->
+							</table>
+						</div>
+						<!-- table end -->
+
+						<!-- Pagination start -->
+						<nav aria-label="Page navigation">
+							<ul class="pagination">
+								<li>
+									<a href="#" aria-label="First Page">
+										<span aria-hidden="true">«</span>
+									</a>
+								</li>
+								<li class="active">
+									<a href="#">1</a>
+								</li>
+								<li>
+									<a href="#">2</a>
+								</li>
+								<li>
+									<a href="#">3</a>
+								</li>
+								<li>
+									<a href="#">4</a>
+								</li>
+								<li>
+									<span class="dots">...</span>
+								</li>
+								<li>
+									<a href="#" aria-label="Last Page">56</a>
+								</li>
+								<li>
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">»</span></a>
+								</li>
+							</ul>
+						</nav>
+						<!-- Pagination end -->
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+	<!-- Main end -->
+
+	<!-- Footer start -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-md-2">
+					<a href="#" class="footer__logo-wrap">
+						<img src="images/logo-region.png" alt="logo-region" class="logo-region">
+						<img src="images/logo-city-black.png" alt="logo-city" class="logo-city-black">
+					</a>
+				</div>
+				<div class="col-sm-6 col-md-5">
+					<div class="footer__copyright">
+						<p class="footer__text">© 2021. Всі права захищено.</p>
+						<p class="footer__text">Всі права на статті, ілюстрації, інші матеріали належать Львівській міській раді
+							та охороняються Законом України «Про авторське право і суміжні права». При використанні матеріалів
+							посилання на сайт обов'язкове!
+						</p>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-3">
+					<div class="footer__contact">
+						<p class="footer__text">Львівська міська рада</p>
+						<div class="footer__contact-item">
+							<img src="images/icon/icon-local.svg" alt="icon-local" class="footer__contact-icon">
+							<span class="footer__text">79006, м. Львів, пл. Ринок, 1</span>
+						</div>
+						<div class="footer__contact-item">
+							<img src="images/icon/icon-email.svg" alt="icon-email" class="footre__contact-icon">
+							<a href="mailto:dm_uau_lmr@ukr.net" class="footer__link footer__text">dm_uau_lmr@ukr.net</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-2">
+					<div class="footer__brand">
+						<p class="footer__text">Розробка та підтримка</p>
+						<a href="https://softpro.ua" class="logo-softpro">
+							<img class="footer__brand-img" src="images/logo-softpro.png" alt="logo-softpro">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer end -->
+	<script src="scripts/script.js"></script>
+</body>
+
+</html>

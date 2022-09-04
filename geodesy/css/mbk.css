@@ -1,0 +1,467 @@
+:root {
+    --white-w-b: #fff;
+    --white-b-w: #fff;
+    --black-w-b: #000;
+    --black-b-w: #000;
+    --lightgray-w-b: #FAFBFF;
+    --lightgray-b-w: #FAFBFF;
+    --gray-w-b: #E8E8E8;
+    --gray-b-w: #E8E8E8;
+    --yellow-w-b: #FDE08D;
+    --yellow-b-w: #FDE08D;
+    --mainblue-b-w: #415998;
+    --mainblue-w-b: #415998;
+    --maingreen-b-w: #26de81;
+    --maingreen-w-b: #26de81;
+}
+
+.header {
+    padding: 0 5%;
+}
+
+.content {
+    padding: 0 5%;
+
+}
+
+.datatable-tools {
+    margin: 20px 0;
+}
+
+.dataset__card-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--mainblue-b-w);
+    border: 1px solid var(--mainblue-b-w);
+    background-color: transparent;
+    border-radius: 5px;
+    transition: all .2s;
+    position: relative;
+    padding-left: 25px;
+    min-width: 125px;
+}
+
+.dataset__card-link:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--white-w-b);
+    background-color: var(--mainblue-b-w);
+    border: 1px solid var(--white-w-b);
+
+}
+
+.btn-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.wrapper {
+    margin-top: 120px;
+}
+
+.el-checkbox__label {
+    margin-right: 40px;
+}
+
+.progress-wrapper {
+    width: 320px;
+}
+
+.ellipsis {
+    text-align: center;
+}
+
+.ellipsis>a {
+    display: block;
+    font-size: 1em;
+    color: #000;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.ellipsis>a:hover {
+    color: var(--mainblue-b-w);
+    transform: scale(1.2);
+}
+
+
+/* Side panel start */
+.sidepanel {
+    width: 0;
+    position: fixed;
+    z-index: 9999;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 50px;
+}
+
+.sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidepanel a:hover {
+    color: #f1f1f1;
+}
+
+.sidepanel .closebtn {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    font-size: 36px;
+}
+
+.openbtn {
+    position: fixed;
+    right: -90px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: var(--mainblue-b-w);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    transition: all 0.8s ease;
+    z-index: 1;
+}
+
+.openbtn:hover {
+    right: 0;
+}
+
+/* Side panel end */
+
+/* Table style start */
+th,
+tr,
+td {
+    position: relative;
+}
+
+.th-title {
+    word-wrap: break-word;
+}
+
+/* Table style end */
+
+/* Labels style start */
+.label.label-check {
+    color: #fff;
+    display: block;
+    padding: 5px;
+    white-space: normal;
+    word-break: keep-all;
+    word-wrap: break-word;
+}
+
+.label-grey {
+    background: gray;
+}
+
+.label-brown {
+    background: Brown;
+}
+
+.label-purple {
+    background: purple;
+}
+
+.label-orange {
+    background: orange;
+}
+
+.label-green {
+    background: green;
+}
+
+.label-blue {
+    background: blue;
+}
+
+/* Labels style end */
+
+/* Buttons style start */
+.button-decline {
+    margin-top: 5px;
+    padding: 5px;
+    line-height: 1;
+}
+
+/* Buttons style end */
+
+/* Filter style start */
+
+/* .filter>div{
+    position: sticky;
+    top: 250px;
+} */
+/* Filter style end */
+
+
+
+/* Progress bar style start */
+.progress-bar_bg-color {
+    background-color: var(--mainblue-b-w);
+}
+
+
+/* Progress bar style end */
+
+/* Pagination style start */
+
+
+.pagination>li>span.dots {
+    position: relative;
+    top: 10px;
+    background: none;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    z-index: 2;
+    color: #23527c;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+
+/* Pagination style end */
+
+/* Footer style start */
+.footer {
+    background-color: var(--lightgray-w-b);
+    padding: 40px 0 60px 0;
+    margin-top: auto;
+}
+
+/* Footer style end */
+
+
+/* Media style start */
+
+@media screen and (min-width:990px) and (max-width:1250px) {
+
+    .header {
+        padding: 0;
+    }
+
+    .content {
+        padding: 0;
+
+    }
+
+    th,
+    td,
+    tr {
+        font-size: 12px;
+        word-break: normal;
+        word-wrap: break-word;
+    }
+
+    .label.label-check {
+        font-size: 10px;
+    }
+
+    a.dataset__card-link,
+    .btn.dataset__card-link,
+    .btn.btn-outline-danger {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width:320px) and (max-width:989px) {
+
+    .wrapper {
+        margin-top: 105px;
+    }
+
+    .header {
+        padding: 0;
+    }
+
+    .content {
+        padding: 0;
+
+    }
+
+    .progress-wrapper {
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .controls {
+        width: 100%;
+    }
+
+}
+
+
+
+@media screen and (max-width:670px) {
+    .navbar>a>h5 {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .navbar>img,
+    .geo__logo-wrap {
+        display: none;
+    }
+
+    .dataTables_info {
+        font-size: 14px;
+    }
+
+    .input-search {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+    }
+
+    .controls>.dataset__card-link {
+        margin-top: 15px;
+        width: 100%;
+    }
+}
+
+
+/* Table media start */
+@media screen and (min-width: 320px) and (max-width: 1189px) {
+
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        margin: 0 0 1rem 0;
+    }
+
+    tr:nth-child(odd) {
+        background: #ccc;
+    }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50% !important;
+    }
+
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: 700;
+    }
+
+    /*
+		Label the data
+    You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
+		*/
+    td:nth-of-type(1):before {
+        content: "№ знімання:";
+    }
+
+    td:nth-of-type(2):before {
+        content: "Адреса:";
+    }
+
+    td:nth-of-type(3):before {
+        content: "Статус:";
+    }
+
+    td:nth-of-type(4):before {
+        content: "Вид робіт:";
+    }
+
+    td:nth-of-type(5):before {
+        content: "Дата:";
+    }
+
+    td:nth-of-type(6):before {
+        content: "Матеріали знімання:";
+    }
+
+    td:nth-of-type(7):before {
+        content: "Коментар:";
+    }
+
+    td:nth-of-type(8):before {
+        content: "Підпис:";
+    }
+
+}
+
+/* Table media end */
+
+
+@media screen and (max-width:455px) {
+    .pagination>li>a {
+        margin: 3px;
+        font-size: 10px;
+        line-height: 10px;
+    }
+
+    .title-header {
+        display: none;
+    }
+
+    .wrapper {
+        margin-top: 75px;
+    }
+
+    .header {
+        height: auto;
+    }
+
+    .navbar-brand>.header__navbar_logo {
+        display: none;
+    }
+}
+
+@media screen and (max-width:359px) {
+    .pagination>li>a {
+        margin: 1px;
+    }
+}
+
+/* Media style end */
