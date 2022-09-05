@@ -12,9 +12,19 @@ body {
 	width: 95%;
 	margin: 0 auto;
 }
+
+.flex-wrap {
+	display: flex;
+}
+
+.current-date,
+.class-name {
+	width: 50%;
+}
+
 .header {
 	position: sticky;
-	padding: 15px 15px 10px 0;
+	padding: 15px 15px 10px;
 	top: 0;
 	background-color: #fff;
 	margin-bottom: 8px;
@@ -38,6 +48,10 @@ body {
 	min-width: 285px;
 }
 
+.card-select{
+	background-color: #03dac6;
+}
+
 .card-title {
 	text-align: center;
 	margin-bottom: 8px;
@@ -49,7 +63,7 @@ body {
 
 .list-item {
 	position: relative;
-  margin-bottom: 4px;
+	margin-bottom: 4px;
 }
 
 .card-item__text-left {
