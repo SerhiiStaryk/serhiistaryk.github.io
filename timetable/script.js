@@ -46,49 +46,58 @@ const timetable = [
 	{
 		day: 'Понеділок',
 		lessons: [
-			'Інт. курс(математика)',
-			'Укр. мова',
-			'Англійська',
-			'Музика',
-			'Укр. мова(інт.)',
+			{ name: 'Інт. курс(математика)', link: '' },
+			{ name: 'Укр. мова', link: '' },
+			{ name: 'Англійська', link: '' },
+			{ name: 'Музика', link: '' },
+			{ name: 'Укр. мова(інт.)', link: '' },
 		],
 	},
 	{
 		day: 'Вівторок',
 		lessons: [
-			'Інт. курс(природа)',
-			'Укр. мова',
-			'Англійська',
-			'Математика',
-			'Шахи',
+			{ name: 'Інт. курс(природа)', link: '' },
+			{ name: 'Укр. мова', link: '' },
+			{ name: 'Англійська', link: '' },
+			{ name: 'Математика', link: '' },
+			{ name: 'Шахи', link: '' },
 		],
 	},
 	{
 		day: 'Середа',
 		lessons: [
-			"Інт. курс(основи зродов'я)",
-			'Фізкультура',
-			'Математика',
-			'Укр. мова',
+			{
+				name: "Інт. курс(основи зродов'я)",
+				link: 'https://us04web.zoom.us/j/77244409096?pwd=tDp661JC1LBI9QxAs9tgIDDFoqSHZ3.1',
+			},
+			{ name: 'Фізкультура', link: '' },
+			{
+				name: 'Математика',
+				link: 'https://us04web.zoom.us/j/72998465078?pwd=NlcyfJIFh0htiKpixno49Xjezc2L1W.1',
+			},
+			{
+				name: 'Укр. мова',
+				link: 'https://us04web.zoom.us/j/74320416182?pwd=qHozTNBk5y5cuQOLf14tzcxBfqQpBW.1',
+			},
 		],
 	},
 	{
 		day: 'Четвер',
 		lessons: [
-			'Інт. курс(трудове навчання)',
-			'Фізкультура',
-			'Укр. мова',
-			'Укр. мова(інт.курс)',
+			{ name: 'Інт. курс(трудове навчання)', link: '' },
+			{ name: 'Фізкультура', link: '' },
+			{ name: 'Укр. мова', link: '' },
+			{ name: 'Укр. мова(інт.курс)', link: '' },
 		],
 	},
 	{
 		day: "П'ятниця",
 		lessons: [
-			'Інт.курс(природа)',
-			'Укр. мова',
-			'Математика',
-			'Образотворче мистецтво',
-			'Англійська',
+			{ name: 'Інт.курс(природа)', link: '' },
+			{ name: 'Укр. мова', link: '' },
+			{ name: 'Математика', link: '' },
+			{ name: 'Образотворче мистецтво', link: '' },
+			{ name: 'Англійська', link: '' },
 		],
 	},
 ];
@@ -104,8 +113,8 @@ function createDays(timetable) {
 		const card = document.createElement('div');
 		card.classList.add('card');
 
-    console.log(dayWeek);
-    console.log(day.day);
+		console.log(dayWeek);
+		console.log(day.day);
 
 		if (dayWeek === day.day) {
 			card.classList.add('card-select');
@@ -128,7 +137,11 @@ function createLessons(lessons) {
 	for (let i = 0; i < lessons.length; i++) {
 		const li = document.createElement('li');
 		li.classList.add('list-item');
-		li.innerHTML = `${lessons[i]} <span class='card-item__text-left'>${time[i]}</span>`;
+		if (lessons[i].link === '') {
+			li.innerHTML = `${lessons[i].name} <span class='card-item__text-left'>${time[i]}</span>`;
+		} else {
+			li.innerHTML = `<a href=${lessons[i].link} target="_blank">${lessons[i].name}</a> <span class='card-item__text-left'>${time[i]}</span>`;
+		}
 		ol.appendChild(li);
 	}
 	return ol;
