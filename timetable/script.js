@@ -84,10 +84,19 @@ const timetable = [
 	{
 		day: 'Четвер',
 		lessons: [
-			{ name: 'Інт. курс(трудове навчання)', link: '' },
+			{
+				name: 'Інт. курс(трудове навчання)',
+				link: 'https://us04web.zoom.us/j/77244409096?pwd=tDp661JC1LBI9QxAs9tgIDDFoqSHZ3.1',
+			},
 			{ name: 'Фізкультура', link: '' },
-			{ name: 'Укр. мова', link: '' },
-			{ name: 'Укр. мова(інт.курс)', link: '' },
+			{
+				name: 'Укр. мова',
+				link: 'https://us04web.zoom.us/j/72998465078?pwd=NlcyfJIFh0htiKpixno49Xjezc2L1W.1',
+			},
+			{
+				name: 'Укр. мова(інт.курс)',
+				link: 'https://us04web.zoom.us/j/74320416182?pwd=qHozTNBk5y5cuQOLf14tzcxBfqQpBW.1',
+			},
 		],
 	},
 	{
