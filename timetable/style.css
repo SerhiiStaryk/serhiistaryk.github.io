@@ -75,6 +75,15 @@ a {
 	right: 0;
 }
 
+.note{
+	height: fit-content;
+	background-color: #fff59d;
+}
+
+.note li {
+	margin-left: 20px;
+}
+
 .column {
 	width: 33.33%;
 	padding: 10px;
