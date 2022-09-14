@@ -95,7 +95,7 @@ const timetable = [
 			},
 			{
 				name: 'Укр. мова(інт.курс)',
-				link: 'l',
+				link: '',
 			},
 		],
 	},
@@ -123,10 +123,11 @@ function createDays(timetable) {
 		card.classList.add('card');
 
 		card.classList.remove('card-select');
+		card.innerHTML = `<h3 class="card-title">${day.day}</h3>`;
 
-		dayWeek === day.day
-			? card.classList.add('card-select')
-			: (card.innerHTML = `<h3 class="card-title">${day.day}</h3>`);
+		if (dayWeek === day.day) {
+			card.classList.add('card-select');
+		}
 
 		card.appendChild(createLessons(day.lessons));
 		column.appendChild(card);
