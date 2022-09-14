@@ -192,5 +192,4 @@ function createToDoList() {
 	row.appendChild(column);
 }
 
-createToDoList();
 createDays(timetable);
