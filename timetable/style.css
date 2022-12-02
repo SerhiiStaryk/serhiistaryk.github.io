@@ -6,13 +6,16 @@
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	background-color: #1d95c9;
+	width: 100%;
+	height: 100%;
 }
 
 a {
-	color: #000
+	color: #000;
 }
 
-footer{
+footer {
 	padding: 35px;
 }
 
@@ -31,12 +34,14 @@ footer{
 }
 
 .header {
+	color: #f1f1f1;
 	position: sticky;
 	padding: 15px 15px 10px;
 	top: 0;
-	background-color: #fff;
 	margin-bottom: 8px;
-	z-index: 999;
+	background-color: #1d95c9;
+	z-index: 1;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .page-title {
@@ -51,13 +56,14 @@ footer{
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	padding: 16px;
-	background-color: #f1f1f1;
+	background-color: #e2e2e2;
 	height: 180px;
 	min-width: 285px;
+	border-radius: 15px;
 }
 
-.card-select{
-	background-color: #03dac6;
+.card-select {
+	background-color: #03da2e;
 }
 
 .card-title {
@@ -79,7 +85,7 @@ footer{
 	right: 0;
 }
 
-.note{
+.note {
 	height: fit-content;
 	background-color: #fff59d;
 }
@@ -98,32 +104,38 @@ footer{
 	flex-wrap: wrap;
 }
 
-.btn-link{
-	background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
-  border-radius: .5rem;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  display: flex;
-  font-size: 16px;
-  justify-content: center;
-  padding: 1rem 1.75rem;
-  text-decoration: none;
-  width: 100%;
-  border: 0;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+.btn-link {
+	background-image: linear-gradient(-180deg, #37e2a6 0%, #1ec85c 100%);
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	color: #ffffff;
+	display: flex;
+	font-size: 16px;
+	justify-content: center;
+	padding: 1rem 1.75rem;
+	text-decoration: none;
+	width: 100%;
+	border: 0;
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+}
+
+#sky{
+	position: absolute;
+	z-index: 2;
+	overflow: hidden;
 }
 
 .btn-link:hover {
-  background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+	background-image: linear-gradient(-180deg, #6dc91d 0%, #4c9c17 100%);
 }
 
 @media (min-width: 768px) {
-  .button-43 {
-    padding: 1rem 2rem;
-  }
+	.button-43 {
+		padding: 1rem 2rem;
+	}
 }
 
 @media screen and (max-width: 950px) {

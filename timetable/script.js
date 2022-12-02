@@ -158,37 +158,7 @@ function createToDoList() {
 	card.classList.add('card');
 	card.classList.add('note');
 
-	card.innerHTML = `
-<p>Доброго &nbsp;вечора, шановні батьки.</p>
-<p>У &nbsp;понеділок &nbsp;ми &nbsp;зустрічаємось &nbsp;о &nbsp;8.15 &nbsp;привході &nbsp;у &nbsp;школу.</p>
-<br>
-<p><strong>Діти &nbsp; повинні &nbsp;мати:</strong></p>
-<ol>
-    <li>бейджики</li>
-    <li>перевзувне &nbsp;взуття.</li>
-</ol>
-<br>
-<p><strong>Підручники:</strong></p>
-<ol>
-    <li>математику,</li>
-    <li>буквар(1ч.)</li>
-</ol>
-<p><br></p>
-<p><strong>Друковані &nbsp;зошити:</strong></p>
-<ol>
-    <li>математика,&nbsp;</li>
-    <li>зошит &nbsp;для письма &nbsp;та розвитку &nbsp;мовлення (1 ч.)</li>
-</ol>
-<p><br></p>
-<p><strong>Прошу &nbsp;принести:</strong></p>
-<ol>
-    <li>2 зошитиу &nbsp;клітинку</li>
-    <li>2 &nbsp;у &nbsp;косу &nbsp;лінійку.</li>
-    <li>Пенал &nbsp;і &nbsp;кольоровіолівці.&nbsp;</li>
-</ol>
-<br>
-<p>Прохання &nbsp; підручники &nbsp; і &nbsp;зошити &nbsp;обгорнути.&nbsp;</p>
-	`;
+	card.innerHTML = `some text`;
 	column.appendChild(card);
 	row.appendChild(column);
 }
