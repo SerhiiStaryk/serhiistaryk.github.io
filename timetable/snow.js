@@ -4,10 +4,10 @@ window.onload = function () {
 	let ctx = canvas.getContext('2d');
 
 	//set canvas dims to window height and width
-	let W = document.documentElement.clientWidth;
-	let H = document.documentElement.clientHeight;
+	let W = window.innerWidth;
+	let H = document.documentElement.scrollHeight;
 
-	canvas.width = W - 1;
+	canvas.width = W - 20;
 	canvas.height = H - 1;
 
 	console.log('H', H);
