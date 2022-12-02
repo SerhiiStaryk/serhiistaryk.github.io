@@ -133,7 +133,7 @@ footer {
 }
 
 @media (min-width: 768px) {
-	.button-43 {
+	.button {
 		padding: 1rem 2rem;
 	}
 }
@@ -151,5 +151,9 @@ footer {
 
 	p {
 		font-size: 14px;
+	}
+
+	footer{
+		padding: 20px;
 	}
 }
