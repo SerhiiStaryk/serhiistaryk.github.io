@@ -1,1 +1,0 @@
-# serhiistaryk.github.io
