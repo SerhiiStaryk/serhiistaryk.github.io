@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Mastery Hub — Exam Prep (Classes 12–20)</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome for clean icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom subtle utilities for 3D flashcards & smooth transitions */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    /* Custom scrollbar for clean look */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-800">
+
+  <!-- Top Sticky Header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between py-3 gap-3">
+        <!-- Brand & Title -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-md shadow-indigo-200">
+              <i class="fa-solid fa-graduation-cap text-lg"></i>
+            </div>
+            <div>
+              <h1 class="text-lg sm:text-xl font-bold text-slate-900 tracking-tight leading-tight">English Exam Prep Hub</h1>
+              <p class="text-xs text-slate-500 font-medium">Classes 12, 14, 15, 16, 17, 19 &amp; 20</p>
+            </div>
+          </div>
+          <!-- Mobile Progress Pill -->
+          <div class="md:hidden flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-full text-xs font-semibold text-slate-700">
+            <i class="fa-solid fa-trophy text-amber-500"></i>
+            <span id="mobileScoreBadge">0% Ready</span>
+          </div>
+        </div>
+
+        <!-- Primary Mode Switcher Tabs -->
+        <nav class="flex items-center bg-slate-100 p-1 rounded-xl self-stretch md:self-auto" role="tablist">
+          <button onclick="switchMode('study')" id="tab-study" class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-indigo-600 shadow-sm">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Study Guide</span>
+          </button>
+          <button onclick="switchMode('flashcards')" id="tab-flashcards" class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 hover:text-slate-900">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Flashcards</span>
+          </button>
+          <button onclick="switchMode('test')" id="tab-test" class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 hover:text-slate-900">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <span>Practice Tests</span>
+            <span class="hidden sm:inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] font-bold bg-indigo-100 text-indigo-700 rounded-full">35 Qs</span>
+          </button>
+        </nav>
+
+        <!-- Desktop Progress Summary -->
+        <div class="hidden md:flex items-center gap-4">
+          <div class="text-right">
+            <div class="text-xs font-medium text-slate-500">Mastery Progress</div>
+            <div class="text-sm font-bold text-slate-800"><span id="answeredCount">0</span>/<span id="totalQuestionsCount">35</span> Solved (<span id="accuracyBadge" class="text-indigo-600">0%</span>)</div>
+          </div>
+          <div class="w-11 h-11 rounded-full bg-indigo-50 border-2 border-indigo-200 flex items-center justify-center text-indigo-700 font-bold text-xs" id="progressCircleText">
+            0%
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+    <!-- Topic Filter Bar (Shared across Study & Tests) -->
+    <div id="topicFilterBar" class="mb-6 bg-white p-3 sm:p-4 rounded-2xl border border-slate-200/80 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+          <i class="fa-solid fa-filter text-indigo-500"></i> Filter by Class Topic
+        </span>
+        <div id="searchContainer" class="relative w-full sm:w-64">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+          <input type="text" id="studySearchInput" oninput="filterStudyContent()" placeholder="Search phrases or grammar..." class="w-full pl-8 pr-3 py-1.5 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all">
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2" id="classFilterPills">
+        <!-- Injected dynamically via JS -->
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 1: ORGANIZED STUDY GUIDE                          -->
+    <!-- ========================================================= -->
+    <section id="view-study" class="space-y-8">
+      <!-- Quick Overview Banner -->
+      <div class="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 rounded-2xl p-5 sm:p-6 text-white shadow-lg shadow-indigo-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <span class="inline-block px-2.5 py-1 rounded-full bg-white/20 text-xs font-semibold tracking-wide mb-2">Complete Exam Syllabus</span>
+          <h2 class="text-xl sm:text-2xl font-bold">Structured Study Reference</h2>
+          <p class="text-indigo-100 text-sm mt-1 max-w-2xl">Review key functional phrases, grammar matrices, and transformation rules across all 7 classes. Click any phrase to copy it, or jump straight into flashcards and practice tests.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 shrink-0">
+          <button onclick="switchMode('flashcards')" class="px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-sm font-semibold backdrop-blur-sm transition-all flex items-center gap-2">
+            <i class="fa-solid fa-bolt text-amber-300"></i> Quick Flashcards
+          </button>
+          <button onclick="switchMode('test')" class="px-4 py-2.5 rounded-xl bg-white text-indigo-700 hover:bg-indigo-50 text-sm font-bold shadow-sm transition-all flex items-center gap-2">
+            <i class="fa-solid fa-play"></i> Start Practice Test
+          </button>
+        </div>
+      </div>
+
+      <!-- Study Cards Grid -->
+      <div id="studyCardsContainer" class="space-y-8">
+        <!-- Rendered dynamically by JS for clean filtering & search -->
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 2: INTERACTIVE FLASHCARDS                       -->
+    <!-- ========================================================= -->
+    <section id="view-flashcards" class="hidden max-w-3xl mx-auto">
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900">Active Recall Flashcards</h2>
+            <p class="text-sm text-slate-500">Tap the card to flip between the prompt/situation and the exact target expression or rule.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span id="flashcardCounter" class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold">1 / 28</span>
+            <button onclick="shuffleFlashcards()" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors" title="Shuffle Deck">
+              <i class="fa-solid fa-shuffle"></i> Shuffle
+            </button>
+          </div>
+        </div>
+
+        <!-- 3D Flip Card -->
+        <div class="perspective-1000 w-full h-72 sm:h-80 cursor-pointer select-none mb-6" onclick="flipFlashcard()">
+          <div id="flashcardInner" class="relative w-full h-full transition-transform duration-500 transform-style-3d">
+            <!-- Front -->
+            <div class="absolute inset-0 backface-hidden rounded-2xl bg-gradient-to-br from-slate-50 to-indigo-50/60 border-2 border-indigo-100 p-6 sm:p-8 flex flex-col justify-between shadow-sm">
+              <div class="flex items-center justify-between">
+                <span id="fcClassBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700">Class 12</span>
+                <span class="text-xs font-medium text-slate-400 flex items-center gap-1"><i class="fa-solid fa-rotate"></i> Click to flip</span>
+              </div>
+              <div class="text-center my-auto px-2">
+                <p class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-2" id="fcCategoryLabel">Category</p>
+                <h3 id="fcFrontText" class="text-xl sm:text-2xl font-bold text-slate-800 leading-snug">Loading prompt...</h3>
+              </div>
+              <div class="text-center text-xs text-slate-400">Think of the exact phrase or grammar structure</div>
+            </div>
+
+            <!-- Back -->
+            <div class="absolute inset-0 backface-hidden rotate-y-180 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-700 text-white p-6 sm:p-8 flex flex-col justify-between shadow-lg">
+              <div class="flex items-center justify-between">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white">Target Expression / Rule</span>
+                <span class="text-xs font-medium text-indigo-200 flex items-center gap-1"><i class="fa-solid fa-rotate"></i> Click to flip back</span>
+              </div>
+              <div class="text-center my-auto px-2">
+                <p id="fcBackText" class="text-xl sm:text-2xl font-bold leading-snug mb-3">Answer</p>
+                <p id="fcExampleText" class="text-sm text-indigo-100 italic bg-white/10 rounded-xl p-3">Example sentence</p>
+              </div>
+              <div class="text-center text-xs text-indigo-200">Got it right? Move to the next card!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard Navigation Controls -->
+        <div class="flex items-center justify-between gap-4">
+          <button onclick="prevFlashcard()" class="flex-1 py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+            <i class="fa-solid fa-arrow-left"></i> Previous
+          </button>
+          <button onclick="flipFlashcard()" class="py-3 px-6 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold text-sm transition-colors">
+            Flip Card
+          </button>
+          <button onclick="nextFlashcard()" class="flex-1 py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-sm transition-colors flex items-center justify-center gap-2">
+            Next <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 3: INTERACTIVE PRACTICE TESTS                     -->
+    <!-- ========================================================= -->
+    <section id="view-test" class="hidden space-y-6">
+      <!-- Test Control Dashboard -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900">Practice Test Arena</h2>
+            <p class="text-sm text-slate-500 mt-0.5">Select a specific class mini-test above or take the full 35-question mixed exam. Instant feedback included.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button onclick="filterMissedQuestions()" id="retryMissedBtn" class="hidden px-4 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2">
+              <i class="fa-solid fa-rotate-right"></i> Retry Missed (<span id="missedCount">0</span>)
+            </button>
+            <button onclick="resetAllTests()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-semibold transition-all flex items-center gap-2">
+              <i class="fa-solid fa-trash-can"></i> Reset Answers
+            </button>
+          </div>
+        </div>
+
+        <!-- Score Summary Strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-5 border-t border-slate-100">
+          <div class="bg-slate-50 rounded-xl p-3 border border-slate-200/60">
+            <div class="text-xs text-slate-500 font-medium">Showing Questions</div>
+            <div class="text-lg font-extrabold text-slate-800 mt-0.5" id="statShowing">35</div>
+          </div>
+          <div class="bg-emerald-50/70 rounded-xl p-3 border border-emerald-200/60">
+            <div class="text-xs text-emerald-700 font-medium">Correct Answers</div>
+            <div class="text-lg font-extrabold text-emerald-700 mt-0.5" id="statCorrect">0</div>
+          </div>
+          <div class="bg-rose-50/70 rounded-xl p-3 border border-rose-200/60">
+            <div class="text-xs text-rose-700 font-medium">Incorrect Answers</div>
+            <div class="text-lg font-extrabold text-rose-700 mt-0.5" id="statIncorrect">0</div>
+          </div>
+          <div class="bg-indigo-50/70 rounded-xl p-3 border border-indigo-200/60">
+            <div class="text-xs text-indigo-700 font-medium">Current Accuracy</div>
+            <div class="text-lg font-extrabold text-indigo-700 mt-0.5" id="statAccuracy">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Questions List Container -->
+      <div id="testQuestionsContainer" class="space-y-5">
+        <!-- Dynamically rendered test questions -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification (Replaces alert() cleanly) -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-2.5 text-sm font-medium pointer-events-none">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toastMessage">Copied to clipboard!</span>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. CURRICULUM DATA (ALL 7 CLASSES WITH EXACT PHRASES & CLEANED EXAMPLES)
+    // =========================================================================
+    const CLASSES_META = {
+      all: { id: 'all', label: 'All Classes (7)', color: 'indigo', badgeBg: 'bg-indigo-100', badgeText: 'text-indigo-700', border: 'border-indigo-200', icon: 'fa-layer-group' },
+      12:  { id: 12, label: 'Class 12: Plot & Reviews', short: 'Class 12', color: 'rose', badgeBg: 'bg-rose-100', badgeText: 'text-rose-700', border: 'border-rose-200', icon: 'fa-film' },
+      14:  { id: 14, label: 'Class 14: Give Opinion', short: 'Class 14', color: 'amber', badgeBg: 'bg-amber-100', badgeText: 'text-amber-800', border: 'border-amber-200', icon: 'fa-comments' },
+      15:  { id: 15, label: 'Class 15: Passive & Linkers', short: 'Class 15', color: 'emerald', badgeBg: 'bg-emerald-100', badgeText: 'text-emerald-800', border: 'border-emerald-200', icon: 'fa-gears' },
+      16:  { id: 16, label: 'Class 16: Describe Habits', short: 'Class 16', color: 'sky', badgeBg: 'bg-sky-100', badgeText: 'text-sky-800', border: 'border-sky-200', icon: 'fa-repeat' },
+      17:  { id: 17, label: 'Class 17: Give News', short: 'Class 17', color: 'purple', badgeBg: 'bg-purple-100', badgeText: 'text-purple-800', border: 'border-purple-200', icon: 'fa-newspaper' },
+      19:  { id: 19, label: 'Class 19: Compare & Contrast', short: 'Class 19', color: 'teal', badgeBg: 'bg-teal-100', badgeText: 'text-teal-800', border: 'border-teal-200', icon: 'fa-scale-balanced' },
+      20:  { id: 20, label: 'Class 20: Vague & Tentative', short: 'Class 20', color: 'slate', badgeBg: 'bg-slate-200', badgeText: 'text-slate-800', border: 'border-slate-300', icon: 'fa-cloud' }
+    };
+
+    const STUDY_DATA = [
+      {
+        classId: 12,
+        title: "Class 12. Tell a plot and recommend a book/film",
+        subtitle: "Functional language for reviewing, recommending, comparing, and critiquing books and movies.",
+        sections: [
+          {
+            heading: "Introducing a recommendation",
+            icon: "fa-thumbs-up",
+            accent: "text-rose-600",
+            items: [
+              "If you're looking for something exciting, you should definitely check out…",
+              "I highly recommend this book/film because…",
+              "This is a must-read/must-watch if you like..",
+              "You might enjoy this if you’re into..."
+            ]
+          },
+          {
+            heading: "Describing the book/film",
+            icon: "fa-clapperboard",
+            accent: "text-rose-600",
+            items: [
+              "The plot is really gripping and keeps you on edge / predictable.",
+              "The special effects/scenes are absolutely spectacular / over-the-top.",
+              "It has a quality cast. / It was miscast.",
+              "The main characters are well-written / poorly developed.",
+              "The story is set in Jamaica.",
+              "The director’s / writer’s take on … is absolutely remarkable / a bit off.",
+              "The book/film is very imaginative and original / dull and repetitive."
+            ]
+          },
+          {
+            heading: "Comparing to other works",
+            icon: "fa-code-compare",
+            accent: "text-rose-600",
+            items: [
+              "It's just as good as… / not nearly as good as …",
+              "If you liked …, you'll love this one.",
+              "It’s similar to…, but it feels more…"
+            ]
+          },
+          {
+            heading: "Highlighting strengths",
+            icon: "fa-star",
+            accent: "text-rose-600",
+            items: [
+              "One of the best / worst things about this book/film is…",
+              "What I really liked / disliked about it was...",
+              "It stands out because of the…",
+              "The author/director does a fantastic job of..."
+            ]
+          },
+          {
+            heading: "Encouraging someone to read/watch it",
+            icon: "fa-fire",
+            accent: "text-emerald-600",
+            items: [
+              "You won’t be disappointed!",
+              "Trust me, it’s worth it / your time.",
+              "Give it a try – you won’t regret it.",
+              "It’s one of those books/films that you’ll keep thinking about.",
+              "I couldn’t put it down / I couldn’t stop watching!",
+              "Expect your mind to be blown."
+            ]
+          },
+          {
+            heading: "Expressing disappointment",
+            icon: "fa-thumbs-down",
+            accent: "text-slate-600",
+            items: [
+              "It really wasn't worth the hype.",
+              "I expected more from it, to be honest.",
+              "It didn’t meet my expectations at all.",
+              "I'd skip this one if I were you.",
+              "I wouldn't waste my time on it.",
+              "It's definitely not a movie I'd watch again."
+            ]
+          }
+        ]
+      },
+      {
+        classId: 14,
+        title: "Class 14. Give opinion",
+        subtitle: "Phrases for stating viewpoints, agreeing enthusiastically, and disagreeing politely or forcefully.",
+        sections: [
+          {
+            heading: "Giving opinion",
+            icon: "fa-comment-dots",
+            accent: "text-amber-600",
+            items: [
+              "Here’s the thing",
+              "As far as I’m concerned",
+              "There is this growing conviction",
+              "It goes without saying",
+              "It seems that"
+            ]
+          },
+          {
+            heading: "Expressing agreement",
+            icon: "fa-handshake",
+            accent: "text-emerald-600",
+            items: [
+              "Absolutely / Exactly",
+              "I see exactly what you mean",
+              "That’s exactly the point",
+              "That’s convincing",
+              "I have no objection",
+              "I am with you on this"
+            ]
+          },
+          {
+            heading: "Expressing disagreement",
+            icon: "fa-xmark",
+            accent: "text-rose-600",
+            items: [
+              "I don't think that's quite right",
+              "That's not always true",
+              "I don’t know about that.",
+              "I think otherwise",
+              "I take a different view",
+              "Nonsense! (strong / informal)",
+              "You’ve got to be kidding (strong / informal)",
+              "Sure, that's one way of looking at it, however..."
+            ]
+          }
+        ]
+      },
+      {
+        classId: 15,
+        title: "Class 15. Passive Voice. Using Linkers",
+        subtitle: "Core formula: be + past participle (V3/ed), non-finite passive forms, and discourse linkers.",
+        customHtml: `
+          <div class="space-y-6">
+            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-lg bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider">Core Formula</span>
+                <code class="text-base sm:text-lg font-bold text-emerald-950">be + past participle (V3 / -ed)</code>
+              </div>
+              <span class="text-xs text-emerald-700 font-medium">Focus shifts to the action or receiver rather than the doer.</span>
+            </div>
+
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr class="bg-slate-100 text-slate-700 border-b border-slate-200">
+                    <th class="py-3 px-4 font-bold">Aspect</th>
+                    <th class="py-3 px-4 font-bold">Past</th>
+                    <th class="py-3 px-4 font-bold">Present</th>
+                    <th class="py-3 px-4 font-bold">Future</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 bg-white">
+                  <tr>
+                    <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/60">Simple</td>
+                    <td class="py-3 px-4"><code class="px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold">was / were + V3/ed</code><div class="text-xs text-slate-500 mt-1">The film was directed in 2022.</div></td>
+                    <td class="py-3 px-4"><code class="px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold">am / is / are + V3/ed</code><div class="text-xs text-slate-500 mt-1">Emails are sent every morning.</div></td>
+                    <td class="py-3 px-4"><code class="px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold">will be + V3/ed</code><div class="text-xs text-slate-500 mt-1">Results will be announced soon.</div></td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/60">Continuous</td>
+                    <td class="py-3 px-4"><code class="px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold">was / were being + V3/ed</code><div class="text-xs text-slate-500 mt-1">The road was being repaired.</div></td>
+                    <td class="py-3 px-4"><code class="px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold">am / is / are being + V3/ed</code><div class="text-xs text-slate-500 mt-1">A new bridge is being built.</div></td>
+                    <td class="py-3 px-4 text-slate-400 italic text-xs">Not used in standard English</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 font-bold text-slate-800 bg-slate-50/60">Perfect</td>
+                    <td class="py-3 px-4"><code class="px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold">had been + V3/ed</code><div class="text-xs text-slate-500 mt-1">All tickets had been sold.</div></td>
+                    <td class="py-3 px-4"><code class="px-2 py-0.5 bg-emerald-50 text-emerald-800 rounded font-semibold">have / has been + V3/ed</code><div class="text-xs text-slate-500 mt-1">The report has been finished.</div></td>
+                    <td class="py-3 px-4 text-slate-400 italic text-xs">(will have been + V3)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-1">Passive Gerund</div>
+                <code class="text-sm font-bold text-slate-900">being + V3/ed</code>
+                <p class="text-xs text-slate-600 mt-1.5">Used after prepositions &amp; verbs like <em>enjoy, hate, avoid</em>: <br><span class="italic text-slate-800">"I hate being told what to do."</span></p>
+              </div>
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-1">Passive Infinitive</div>
+                <code class="text-sm font-bold text-slate-900">to be + V3/ed</code>
+                <p class="text-xs text-slate-600 mt-1.5">Used after modals &amp; verbs like <em>want, expect, need</em>: <br><span class="italic text-slate-800">"The room needs to be cleaned today."</span></p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-white border border-slate-200">
+              <h4 class="text-sm font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-link text-emerald-600"></i> Essential Linkers in Context</h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                <div class="p-2.5 rounded-lg bg-slate-50"><span class="font-bold text-slate-800 block mb-1">Contrast:</span>However, Although, Despite, Whereas</div>
+                <div class="p-2.5 rounded-lg bg-slate-50"><span class="font-bold text-slate-800 block mb-1">Addition:</span>Furthermore, Moreover, In addition, As well as</div>
+                <div class="p-2.5 rounded-lg bg-slate-50"><span class="font-bold text-slate-800 block mb-1">Cause &amp; Effect:</span>Therefore, Consequently, Due to, As a result</div>
+                <div class="p-2.5 rounded-lg bg-slate-50"><span class="font-bold text-slate-800 block mb-1">Purpose:</span>In order to, So that, So as not to</div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        classId: 16,
+        title: "Class 16. Describe habits",
+        subtitle: "Distinguishing verb patterns (+ base verb vs. + V-ing / Noun) across Present and Past habits.",
+        customHtml: `
+          <div class="space-y-4">
+            <div class="overflow-x-auto rounded-xl border border-slate-200">
+              <table class="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr class="bg-sky-50 text-sky-950 border-b border-sky-200">
+                    <th class="py-3 px-4 font-bold w-36">Verb Pattern</th>
+                    <th class="py-3 px-4 font-bold">Present Habits</th>
+                    <th class="py-3 px-4 font-bold">Past Habits</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 bg-white">
+                  <tr>
+                    <td class="py-4 px-4 font-bold text-sky-800 bg-slate-50/70 align-top">
+                      <code class="px-2 py-1 rounded bg-sky-100 text-sky-900">+ (to) V</code>
+                      <div class="text-[11px] font-normal text-slate-500 mt-1">Base infinitive form</div>
+                    </td>
+                    <td class="py-4 px-4 align-top text-slate-400 italic">
+                      ✗ Not used with <em>used to</em> or <em>would</em> for present habits (use Present Simple instead).
+                    </td>
+                    <td class="py-4 px-4 space-y-3 align-top">
+                      <div>
+                        <span class="font-bold text-slate-900">Used to</span> <span class="text-xs text-slate-500">(past states &amp; repeated actions)</span>
+                        <p class="text-slate-700 italic mt-0.5">"As a child, I <strong>used to study</strong> hard to get good grades."</p>
+                      </div>
+                      <div class="pt-2 border-t border-slate-100">
+                        <span class="font-bold text-slate-900">Would</span> <span class="text-xs text-slate-500">(past repeated actions only — not states!)</span>
+                        <p class="text-slate-700 italic mt-0.5">"My friends and I <strong>would steal</strong> apples from our neighbor’s garden."</p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-4 px-4 font-bold text-sky-800 bg-slate-50/70 align-top">
+                      <code class="px-2 py-1 rounded bg-sky-100 text-sky-900">+ V-ing / N</code>
+                      <div class="text-[11px] font-normal text-slate-500 mt-1">Gerund or Noun</div>
+                    </td>
+                    <td class="py-4 px-4 space-y-3 align-top">
+                      <div>
+                        <span class="font-bold text-slate-900">Be used to</span> <span class="text-xs text-slate-500">(be accustomed to)</span>
+                        <p class="text-slate-700 italic mt-0.5">"I <strong>am used to living</strong> in a cold climate."</p>
+                      </div>
+                      <div class="pt-2 border-t border-slate-100">
+                        <span class="font-bold text-slate-900">Get used to</span> <span class="text-xs text-slate-500">(become accustomed to)</span>
+                        <p class="text-slate-700 italic mt-0.5">"It’s hard to <strong>get used to</strong> such changes."</p>
+                      </div>
+                      <div class="pt-2 border-t border-slate-100">
+                        <span class="font-bold text-slate-900">Start / Quit</span>
+                        <p class="text-slate-700 italic mt-0.5">"I would love to <strong>quit feeling</strong> sorry about what happened."</p>
+                      </div>
+                    </td>
+                    <td class="py-4 px-4 space-y-3 align-top">
+                      <div>
+                        <span class="font-bold text-slate-900">Be used to (was/were)</span>
+                        <p class="text-slate-700 italic mt-0.5">"She <strong>wasn’t used to staying</strong> in such luxurious hotels."</p>
+                      </div>
+                      <div class="pt-2 border-t border-slate-100">
+                        <span class="font-bold text-slate-900">Got used to / Started / Quit</span>
+                        <p class="text-slate-700 italic mt-0.5">"He recently <strong>started training</strong> for the marathon."</p>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
+              <i class="fa-solid fa-lightbulb text-amber-500 mt-0.5 text-sm"></i>
+              <div><strong>Exam Trap Alert:</strong> In <em>"be/get used to"</em>, <strong>"to"</strong> is a preposition, NOT part of an infinitive! Always follow it with a <strong>Noun</strong> or <strong>Verb-ing</strong> (e.g., <em>"used to driving"</em>, never <em>"am used to drive"</em>).</div>
+            </div>
+          </div>
+        `
+      },
+      {
+        classId: 17,
+        title: "Class 17. Give news",
+        subtitle: "Breaking good or bad news naturally and responding with appropriate emotion.",
+        sections: [
+          {
+            heading: "Giving good news",
+            icon: "fa-face-smile-beam",
+            accent: "text-emerald-600",
+            items: [
+              "We are really happy to inform you...",
+              "Can you believe it?",
+              "You’ll never guess what (happened)...",
+              "Are you sitting down?",
+              "I’ve got some amazing news for you..."
+            ]
+          },
+          {
+            heading: "Giving bad news",
+            icon: "fa-cloud-rain",
+            accent: "text-rose-600",
+            items: [
+              "I need to warn you that I have some bad news...",
+              "I’m sorry to spring this on you like this..",
+              "I’m afraid...",
+              "I really don’t know how to say it but...",
+              "I’m sorry I have to tell you that...",
+              "I’m afraid I’ve got some bad news.."
+            ]
+          },
+          {
+            heading: "Responding to news (Positive)",
+            icon: "fa-champagne-glasses",
+            accent: "text-emerald-600",
+            items: [
+              "I’m thrilled to hear that!",
+              "That’s so great!",
+              "Well done!",
+              "Sounds great!",
+              "Congratulations!",
+              "I’m so happy for you!",
+              "Wow, that’s awesome!"
+            ]
+          },
+          {
+            heading: "Responding to news (Sympathetic & Surprised)",
+            icon: "fa-heart-crack",
+            accent: "text-purple-600",
+            items: [
+              "I know how you must be feeling.",
+              "Oh, no, that stinks!",
+              "I’m terribly sorry to hear that.",
+              "That must be so frustrating.",
+              "How sad.",
+              "That’s unfortunate.",
+              "How come? (curious / surprised)",
+              "Really? Are you serious? (surprised)"
+            ]
+          }
+        ]
+      },
+      {
+        classId: 19,
+        title: "Class 19. Compare and contrast",
+        subtitle: "Structures for expressing equality, degrees of comparison, concession, and sharp contrast.",
+        customHtml: `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            ${[
+              { struct: "As + adjective + as...", ex: "This is <strong>as important as</strong> the last document we sent you." },
+              { struct: "Comparative adjectives", ex: "His work qualifications are <strong>much more suitable</strong> for the position." },
+              { struct: "Superlative adjectives", ex: "This is <strong>the funniest</strong> superstition I’ve ever heard!" },
+              { struct: "As well (as)", ex: "This court has awarded financial compensation for real <strong>as well as</strong> for moral damages." },
+              { struct: "Despite / In spite of...", ex: "<strong>Despite</strong> all the drama, the event went quite well." },
+              { struct: "In contrast to", ex: "Finally, <strong>in contrast to</strong> previous years we were able to make profit." },
+              { struct: "The more ..., the more...", ex: "<strong>The more</strong> you think about it, <strong>the more</strong> stressed you get!" },
+              { struct: "Above all else", ex: "There are a couple of rules you have to remember <strong>above all else</strong>." },
+              { struct: "Compared with...", ex: "There isn’t much traffic today <strong>compared with</strong> Monday." },
+              { struct: "Though / Although", ex: "Bobby found the rehearsal useful <strong>although</strong> he was unsuccessful." },
+              { struct: "Unlike", ex: "<strong>Unlike</strong> his father, Bobby is a nice guy." }
+            ].map(item => `
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-teal-300 transition-colors">
+                <div class="text-xs font-bold text-teal-700 uppercase tracking-wide mb-1">${item.struct}</div>
+                <p class="text-sm text-slate-700">"${item.ex}"</p>
+              </div>
+            `).join('')}
+          </div>
+        `
+      },
+      {
+        classId: 20,
+        title: "Class 20. Sound vague and tentative",
+        subtitle: "Hedging language to soften claims, avoid overgeneralization, and sound diplomatic.",
+        sections: [
+          {
+            heading: "Hedging, Softening & Expressing Probability",
+            icon: "fa-feather",
+            accent: "text-slate-700",
+            items: [
+              "I agree up to a point, but I think ...",
+              "I am not so sure about that",
+              "It happens in certain situations",
+              "It might work within some households",
+              "Teenagers tend to be worried about their popularity.",
+              "About 50 percent of the people agree with this statement.",
+              "She is sort of right.",
+              "He’s likely to be against it."
+            ]
+          }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // 2. FLASHCARDS DATA (28 CARDS COVERING ALL 7 CLASSES)
+    // =========================================================================
+    const FLASHCARDS_DATA = [
+      // Class 12
+      { classId: 12, cat: "Class 12 • Highlighting Strengths", front: "How do you say a book was so exciting you couldn't stop reading it?", back: "I couldn’t put it down!", example: "The thriller was so gripping that I couldn’t put it down all weekend." },
+      { classId: 12, cat: "Class 12 • Describing Plot", front: "Complete: 'The plot is really _____ and keeps you on _____.'", back: "gripping / edge", example: "The plot is really gripping and keeps you on edge until the very last scene." },
+      { classId: 12, cat: "Class 12 • Expressing Disappointment", front: "How do you say a hyped movie failed to live up to expectations?", back: "It really wasn't worth the hype. / It didn’t meet my expectations at all.", example: "Everyone praised it online, but honestly it really wasn't worth the hype." },
+      { classId: 12, cat: "Class 12 • Comparing Works", front: "How do you recommend a film based on someone's previous taste?", back: "If you liked …, you'll love this one.", example: "If you liked Inception, you'll love this one." },
+      // Class 14
+      { classId: 14, cat: "Class 14 • Giving Opinion", front: "Phrase meaning 'It is obvious / doesn't need to be stated'", back: "It goes without saying", example: "It goes without saying that preparation is the key to passing." },
+      { classId: 14, cat: "Class 14 • Expressing Agreement", front: "Give 3 expressions for strong agreement.", back: "Absolutely / Exactly • That’s exactly the point • I am with you on this", example: "I am with you on this—the new policy makes total sense." },
+      { classId: 14, cat: "Class 14 • Polite Disagreement", front: "How do you acknowledge someone's view before disagreeing?", back: "Sure, that's one way of looking at it, however...", example: "Sure, that's one way of looking at it, however, the data suggests otherwise." },
+      { classId: 14, cat: "Class 14 • Strong Disagreement", front: "Give 2 informal/strong ways to reject an absurd statement.", back: "Nonsense! / You’ve got to be kidding", example: "You’ve got to be kidding! There's no way we can finish in ten minutes." },
+      // Class 15
+      { classId: 15, cat: "Class 15 • Passive Continuous", front: "Passive formula for Present Continuous & Past Continuous?", back: "am/is/are being + V3/ed  |  was/were being + V3/ed", example: "The stadium is being renovated right now." },
+      { classId: 15, cat: "Class 15 • Passive Perfect", front: "Passive formula for Present Perfect & Past Perfect?", back: "have/has been + V3/ed  |  had been + V3/ed", example: "All the invitations had been sent before Friday." },
+      { classId: 15, cat: "Class 15 • Non-finite Passive", front: "Form of Passive Gerund vs. Passive Infinitive?", back: "Passive Gerund: being + V3/ed | Passive Infinitive: to be + V3/ed", example: "Nobody likes being lied to. / This form needs to be signed." },
+      { classId: 15, cat: "Class 15 • Linkers", front: "Which linkers introduce contrast despite a fact?", back: "Despite / In spite of (+ noun/V-ing) | Although / Though (+ clause)", example: "Despite the heavy rain, the match continued." },
+      // Class 16
+      { classId: 16, cat: "Class 16 • Past Habits", front: "Difference between 'used to + V' and 'would + V'?", back: "'Used to' works for both states & actions; 'Would' works ONLY for repeated past actions.", example: "I used to live in Rome (state). / We would steal apples (action)." },
+      { classId: 16, cat: "Class 16 • Present/Past Habits", front: "What verb form follows 'be used to' and 'get used to'?", back: "V-ing or a Noun (NEVER base infinitive)", example: "I am used to living in a cold climate." },
+      { classId: 16, cat: "Class 16 • Habit Verbs", front: "What form follows 'quit' and 'start' when talking about habits?", back: "V-ing (e.g., quit feeling, started training)", example: "I would love to quit feeling sorry about what happened." },
+      // Class 17
+      { classId: 17, cat: "Class 17 • Giving Good News", front: "Give 3 ways to build suspense before sharing good news.", back: "Can you believe it? • You’ll never guess what happened... • Are you sitting down?", example: "Are you sitting down? I’ve got some amazing news for you!" },
+      { classId: 17, cat: "Class 17 • Giving Bad News", front: "How do you apologize for delivering unexpected bad news?", back: "I’m sorry to spring this on you like this.. / I’m afraid I’ve got some bad news..", example: "I’m sorry to spring this on you like this, but the flight was canceled." },
+      { classId: 17, cat: "Class 17 • Responding to Bad News", front: "Give 3 empathetic responses to bad news.", back: "I’m terribly sorry to hear that. • That must be so frustrating. • Oh, no, that stinks!", example: "You lost your wallet? Oh, no, that stinks!" },
+      // Class 19
+      { classId: 19, cat: "Class 19 • Double Comparative", front: "Structure showing two things increase together?", back: "The more ..., the more...", example: "The more you think about it, the more stressed you get!" },
+      { classId: 19, cat: "Class 19 • Contrast Prepositions", front: "Complete: '_____ his father, Bobby is a nice guy.' / '_____ previous years...'", back: "Unlike / In contrast to", example: "Unlike his father, Bobby is a nice guy." },
+      { classId: 19, cat: "Class 19 • Emphasis", front: "Phrase meaning 'most importantly / before anything else'", back: "Above all else", example: "There are a couple of rules you have to remember above all else." },
+      { classId: 19, cat: "Class 19 • Addition", front: "Complete: '...compensation for real _____ for moral damages.'", back: "as well as", example: "This court has awarded compensation for real as well as for moral damages." },
+      // Class 20
+      { classId: 20, cat: "Class 20 • Partial Agreement", front: "How do you agree partially before adding your own view?", back: "I agree up to a point, but I think ...", example: "I agree up to a point, but I think cost is also a major factor." },
+      { classId: 20, cat: "Class 20 • General Tendencies", front: "Rewrite bluntly: 'Teenagers worry about popularity.' (tentative)", back: "Teenagers tend to be worried about their popularity.", example: "Using 'tend to' avoids absolute generalizations." },
+      { classId: 20, cat: "Class 20 • Probability & Approximation", front: "How do you say someone will probably oppose an idea?", back: "He’s likely to be against it.", example: "Don't ask Mark—he’s likely to be against it." },
+      { classId: 20, cat: "Class 20 • Softening", front: "Give 2 ways to restrict a claim so it doesn't sound universal.", back: "It happens in certain situations / It might work within some households", example: "It might work within some households, though not all." }
+    ];
+
+    // =========================================================================
+    // 3. PRACTICE TEST QUESTIONS BANK (35 QUESTIONS: 5 PER CLASS)
+    // =========================================================================
+    const TEST_QUESTIONS = [
+      // --- CLASS 12 (5 Questions) ---
+      {
+        id: 1, classId: 12, type: "Collocation Completion",
+        question: "Complete the movie review sentence: \"The plot is really gripping and keeps you on _____ from start to finish.\"",
+        options: ["edge", "hype", "time", "point"],
+        correct: 0,
+        explanation: "The fixed idiom from Class 12 is 'keeps you on edge' (meaning suspenseful and exciting)."
+      },
+      {
+        id: 2, classId: 12, type: "Functional Meaning",
+        question: "Which expression is used to express DISAPPOINTMENT about a book or film?",
+        options: [
+          "Expect your mind to be blown.",
+          "It really wasn't worth the hype.",
+          "I couldn’t put it down!",
+          "It stands out because of the cinematography."
+        ],
+        correct: 1,
+        explanation: "'It really wasn't worth the hype' expresses disappointment when something fails to live up to popular praise."
+      },
+      {
+        id: 3, classId: 12, type: "Vocabulary & Critique",
+        question: "If the actors chosen for a movie do NOT fit their roles at all, you can say:",
+        options: ["It has a quality cast.", "It was miscast.", "The story is set in Jamaica.", "It’s a must-watch."],
+        correct: 1,
+        explanation: "'It was miscast' means unsuitable actors were chosen for the characters."
+      },
+      {
+        id: 4, classId: 12, type: "Encouraging a Reader",
+        question: "Choose the correct phrase to encourage a friend to read a novel you loved:",
+        options: [
+          "I'd skip this one if I were you.",
+          "I wouldn't waste my time on it.",
+          "Give it a try – you won’t regret it.",
+          "The characters are poorly developed."
+        ],
+        correct: 2,
+        explanation: "'Give it a try – you won’t regret it' encourages someone to read or watch something."
+      },
+      {
+        id: 5, classId: 12, type: "Comparing Works",
+        question: "Complete the comparison: \"It's just as good as the first book, and if you liked the original, you'll _____ this one.\"",
+        options: ["skip", "love", "miscast", "regret"],
+        correct: 1,
+        explanation: "The standard comparison pattern is: 'If you liked …, you'll love this one.'"
+      },
+
+      // --- CLASS 14 (5 Questions) ---
+      {
+        id: 6, classId: 14, type: "Register & Tone",
+        question: "Which expression represents STRONG, informal disagreement?",
+        options: [
+          "I see exactly what you mean.",
+          "Sure, that's one way of looking at it, however...",
+          "Nonsense! / You’ve got to be kidding!",
+          "I have no objection."
+        ],
+        correct: 2,
+        explanation: "'Nonsense!' and 'You’ve got to be kidding' are strong, direct ways of disagreeing."
+      },
+      {
+        id: 7, classId: 14, type: "Expressing Agreement",
+        question: "Your classmate makes a persuasive argument and you completely agree. Which phrase fits best?",
+        options: [
+          "I take a different view.",
+          "I am with you on this.",
+          "I think otherwise.",
+          "That's not always true."
+        ],
+        correct: 1,
+        explanation: "'I am with you on this' expresses complete agreement and support."
+      },
+      {
+        id: 8, classId: 14, type: "Giving Opinion",
+        question: "Complete the opinion starter: \"_____ without saying that good communication is essential in teamwork.\"",
+        options: ["It goes", "It seems", "Here’s", "There is"],
+        correct: 0,
+        explanation: "'It goes without saying' introduces an opinion or fact that is obvious."
+      },
+      {
+        id: 9, classId: 14, type: "Polite Disagreement",
+        question: "Which phrase is best for politely introducing a counter-argument in a formal discussion?",
+        options: [
+          "Nonsense!",
+          "Sure, that's one way of looking at it, however...",
+          "That’s exactly the point.",
+          "Absolutely!"
+        ],
+        correct: 1,
+        explanation: "'Sure, that's one way of looking at it, however...' concedes the other person's perspective before politely disagreeing."
+      },
+      {
+        id: 10, classId: 14, type: "Categorization",
+        question: "Identify the phrase that introduces a personal viewpoint rather than agreement or disagreement:",
+        options: [
+          "As far as I’m concerned",
+          "I have no objection",
+          "I don't think that's quite right",
+          "That’s convincing"
+        ],
+        correct: 0,
+        explanation: "'As far as I’m concerned' is used for giving your personal opinion."
+      },
+
+      // --- CLASS 15 (5 Questions) ---
+      {
+        id: 11, classId: 15, type: "Passive Transformation (Continuous)",
+        question: "Transform into Present Continuous Passive: \"Workers are repairing the main bridge right now.\"",
+        options: [
+          "The main bridge is repaired right now.",
+          "The main bridge is being repaired right now.",
+          "The main bridge was being repaired right now.",
+          "The main bridge has been repaired right now."
+        ],
+        correct: 1,
+        explanation: "Present Continuous Passive follows: am/is/are + being + V3/ed ('is being repaired')."
+      },
+      {
+        id: 12, classId: 15, type: "Passive Transformation (Perfect)",
+        question: "Transform into Past Perfect Passive: \"Someone had stolen the confidential files before Monday.\"",
+        options: [
+          "The confidential files were stolen before Monday.",
+          "The confidential files have been stolen before Monday.",
+          "The confidential files had been stolen before Monday.",
+          "The confidential files were being stolen before Monday."
+        ],
+        correct: 2,
+        explanation: "Past Perfect Passive follows: had been + V3/ed ('had been stolen')."
+      },
+      {
+        id: 13, classId: 15, type: "Passive Gerund",
+        question: "Choose the correct Passive Gerund form: \"Most celebrities hate _____ by paparazzi everywhere they go.\"",
+        options: ["to follow", "being followed", "be followed", "been followed"],
+        correct: 1,
+        explanation: "After 'hate' (when referring to a general experience), we use the Passive Gerund: being + V3/ed ('being followed')."
+      },
+      {
+        id: 14, classId: 15, type: "Passive Infinitive",
+        question: "Choose the correct Passive Infinitive form: \"These safety instructions need _____ carefully before the test.\"",
+        options: ["being read", "to be read", "be reading", "to have reading"],
+        correct: 1,
+        explanation: "After 'need' (with a passive meaning), we use the Passive Infinitive: to be + V3/ed ('to be read')."
+      },
+      {
+        id: 15, classId: 15, type: "Using Linkers",
+        question: "Select the best linker: \"The experiment was carefully planned; _____, unexpected weather delayed the results.\"",
+        options: ["furthermore", "however", "therefore", "in order to"],
+        correct: 1,
+        explanation: "'However' introduces a contrasting result between the two clauses."
+      },
+
+      // --- CLASS 16 (5 Questions) ---
+      {
+        id: 16, classId: 16, type: "Habit Structures",
+        question: "Choose the correct form: \"I am finally used to _____ up at 6:00 AM for my new job.\"",
+        options: ["wake", "waking", "woke", "have woken"],
+        correct: 1,
+        explanation: "In 'be used to', 'to' is a preposition, so it must be followed by V-ing ('waking')."
+      },
+      {
+        id: 17, classId: 16, type: "Used to vs. Would",
+        question: "Which sentence is grammatically INCORRECT?",
+        options: [
+          "As a child, I used to study hard to get good grades.",
+          "My friends and I would steal apples from our neighbor’s garden.",
+          "We would live in a small house near the river when I was five.",
+          "She wasn’t used to staying in such luxurious hotels."
+        ],
+        correct: 2,
+        explanation: "'Would' cannot be used for past states (like 'live', 'be', 'have'). Use 'used to live' instead."
+      },
+      {
+        id: 18, classId: 16, type: "Gerund after Habit Verbs",
+        question: "Complete the sentence: \"I would love to quit _____ sorry about what happened.\"",
+        options: ["feel", "to feel", "feeling", "felt"],
+        correct: 2,
+        explanation: "The verb 'quit' is followed by a gerund (V-ing): 'quit feeling'."
+      },
+      {
+        id: 19, classId: 16, type: "Process of Adaptation",
+        question: "Which sentence describes the PROCESS of becoming accustomed to a new habit?",
+        options: [
+          "It’s hard to get used to such changes.",
+          "I used to live in a cold climate.",
+          "He would train every morning.",
+          "She quit smoking last year."
+        ],
+        correct: 0,
+        explanation: "'Get used to + Noun/V-ing' describes the process of adapting to something new."
+      },
+      {
+        id: 20, classId: 16, type: "Past Habits",
+        question: "Complete: \"He recently started _____ for the city marathon.\"",
+        options: ["training", "trained", "trains", "be training"],
+        correct: 0,
+        explanation: "As shown in Class 16: 'He recently started training for the marathon' (+ V-ing)."
+      },
+
+      // --- CLASS 17 (5 Questions) ---
+      {
+        id: 21, classId: 17, type: "Giving Bad News",
+        question: "Which phrase is specifically used to deliver BAD news?",
+        options: [
+          "We are really happy to inform you...",
+          "I’m sorry to spring this on you like this..",
+          "I’ve got some amazing news for you...",
+          "Are you sitting down? You won't believe this!"
+        ],
+        correct: 1,
+        explanation: "'I’m sorry to spring this on you like this..' apologizes for delivering sudden bad news."
+      },
+      {
+        id: 22, classId: 17, type: "Responding to News",
+        question: "Friend: \"My flight got canceled and my luggage was lost!\" — Which response is MOST appropriate?",
+        options: [
+          "Well done! Sounds great!",
+          "Oh, no, that stinks! That must be so frustrating.",
+          "Congratulations! I’m thrilled to hear that!",
+          "Wow, that’s awesome!"
+        ],
+        correct: 1,
+        explanation: "'Oh, no, that stinks!' and 'That must be so frustrating' express sympathy for bad news."
+      },
+      {
+        id: 23, classId: 17, type: "Expressing Surprise",
+        question: "Which pair of responses expresses surprise or curiosity when hearing shocking news?",
+        options: [
+          "How sad. / That’s unfortunate.",
+          "How come? / Really? Are you serious?",
+          "Well done! / Congratulations!",
+          "I’m afraid... / I need to warn you..."
+        ],
+        correct: 1,
+        explanation: "'How come?' and 'Really? Are you serious?' express disbelief and curiosity."
+      },
+      {
+        id: 24, classId: 17, type: "Giving Good News",
+        question: "Complete the formal good news announcement: \"We are really happy to _____ you that your application was accepted.\"",
+        options: ["warn", "inform", "spring", "afraid"],
+        correct: 1,
+        explanation: "'We are really happy to inform you...' is a polite/formal way to deliver good news."
+      },
+      {
+        id: 25, classId: 17, type: "Responding to Good News",
+        question: "Friend: \"I just got promoted to Senior Manager!\" — Which response does NOT fit?",
+        options: [
+          "I’m thrilled to hear that!",
+          "I’m so happy for you!",
+          "I’m terribly sorry to hear that.",
+          "Congratulations! Well done!"
+        ],
+        correct: 2,
+        explanation: "'I’m terribly sorry to hear that' is for bad news, not a promotion."
+      },
+
+      // --- CLASS 19 (5 Questions) ---
+      {
+        id: 26, classId: 19, type: "Double Comparatives",
+        question: "Complete the sentence: \"_____ you think about it, _____ stressed you get!\"",
+        options: [
+          "The more / the more",
+          "As much / as much",
+          "Despite / however",
+          "Unlike / compared with"
+        ],
+        correct: 0,
+        explanation: "Class 19 structure: 'The more you think about it, the more stressed you get!'"
+      },
+      {
+        id: 27, classId: 19, type: "Concession (Despite vs. Although)",
+        question: "Choose the correct word: \"_____ all the drama, the event went quite well.\"",
+        options: ["Although", "Despite", "Unlike", "However"],
+        correct: 1,
+        explanation: "'Despite' (or 'In spite of') is followed by a noun phrase ('all the drama'), whereas 'Although' requires a full clause."
+      },
+      {
+        id: 28, classId: 19, type: "Expressing Contrast",
+        question: "Complete: \"_____ his father, Bobby is a nice guy.\"",
+        options: ["Unlike", "As well", "Although", "Above all else"],
+        correct: 0,
+        explanation: "'Unlike' + noun/pronoun highlights a direct difference between two people or things."
+      },
+      {
+        id: 29, classId: 19, type: "Comparing Data/Trends",
+        question: "Complete: \"Finally, _____ previous years we were able to make profit.\"",
+        options: ["in contrast to", "as well as", "though", "the more"],
+        correct: 0,
+        explanation: "'In contrast to previous years...' directly contrasts current performance with past years."
+      },
+      {
+        id: 30, classId: 19, type: "Emphasis & Equality",
+        question: "Which phrase means 'most importantly / more than anything else'?",
+        options: ["Compared with", "Above all else", "As well as", "In spite of"],
+        correct: 1,
+        explanation: "'Above all else' emphasizes the highest priority (e.g., 'rules you have to remember above all else')."
+      },
+
+      // --- CLASS 20 (5 Questions) ---
+      {
+        id: 31, classId: 20, type: "Hedging Generalizations",
+        question: "Make this statement sound more tentative and realistic: \"Teenagers worry about their popularity.\"",
+        options: [
+          "Teenagers always worry about their popularity.",
+          "Teenagers tend to be worried about their popularity.",
+          "It goes without saying teenagers worry about popularity.",
+          "Nonsense, teenagers worry about popularity."
+        ],
+        correct: 1,
+        explanation: "'Tend to' softens a broad generalization so it sounds balanced and accurate."
+      },
+      {
+        id: 32, classId: 20, type: "Partial Agreement",
+        question: "Complete the tentative agreement: \"I agree _____ a point, but I think we need more research.\"",
+        options: ["up to", "in to", "on to", "out of"],
+        correct: 0,
+        explanation: "'I agree up to a point, but I think...' expresses partial agreement while introducing a reservation."
+      },
+      {
+        id: 33, classId: 20, type: "Probability",
+        question: "How do you express that someone will probably oppose a proposal without sounding 100% certain?",
+        options: [
+          "He’s likely to be against it.",
+          "He is definitely against it.",
+          "He used to be against it.",
+          "He couldn't put it down."
+        ],
+        correct: 0,
+        explanation: "'Be likely to + V' expresses probability in a tentative, measured way."
+      },
+      {
+        id: 34, classId: 20, type: "Limiting Scope",
+        question: "Which phrase narrows a claim so it doesn't sound like it happens everywhere?",
+        options: [
+          "It happens in certain situations.",
+          "It happens in every single case.",
+          "That’s exactly the point.",
+          "Expect your mind to be blown."
+        ],
+        correct: 0,
+        explanation: "'It happens in certain situations' (or 'within some households') limits the scope of a statement."
+      },
+      {
+        id: 35, classId: 20, type: "Softening Evaluation",
+        question: "Which expression makes an agreement sound informal and tentative rather than absolute?",
+        options: [
+          "She is sort of right.",
+          "She is 100% undeniably right.",
+          "That’s convincing.",
+          "Absolutely!"
+        ],
+        correct: 0,
+        explanation: "'Sort of' acts as a hedge to soften an adjective ('She is sort of right')."
+      }
+    ];
+
+    // =========================================================================
+    // 4. APPLICATION STATE
+    // =========================================================================
+    let currentMode = 'study'; // 'study' | 'flashcards' | 'test'
+    let selectedClassFilter = 'all';
+    let showOnlyMissed = false;
+
+    // Flashcard state
+    let activeFlashcards = [...FLASHCARDS_DATA];
+    let currentCardIndex = 0;
+    let isCardFlipped = false;
+
+    // User test answers: { [questionId]: selectedOptionIndex }
+    let userAnswers = {};
+
+    // =========================================================================
+    // 5. INITIALIZATION & RENDERING
+    // =========================================================================
+    window.onload = function () {
+      renderClassFilterPills();
+      renderStudyCards();
+      renderFlashcard();
+      renderTestQuestions();
+      updateProgressStats();
+    };
+
+    function switchMode(mode) {
+      currentMode = mode;
+      // Update tab button styles
+      ['study', 'flashcards', 'test'].forEach(m => {
+        const btn = document.getElementById(`tab-${m}`);
+        const view = document.getElementById(`view-${m}`);
+        if (m === mode) {
+          btn.className = "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-white text-indigo-600 shadow-sm";
+          view.classList.remove('hidden');
+        } else {
+          btn.className = "flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all text-slate-600 hover:text-slate-900";
+          view.classList.add('hidden');
+        }
+      });
+
+      // Toggle search input visibility (only relevant in study mode)
+      const searchContainer = document.getElementById('searchContainer');
+      if (mode === 'study') {
+        searchContainer.classList.remove('hidden');
+      } else {
+        searchContainer.classList.add('hidden');
+      }
+
+      // Sync filtered content
+      if (mode === 'flashcards') {
+        filterFlashcardsByClass();
+      } else if (mode === 'test') {
+        renderTestQuestions();
+      }
+    }
+
+    function renderClassFilterPills() {
+      const container = document.getElementById('classFilterPills');
+      const keys = ['all', 12, 14, 15, 16, 17, 19, 20];
+
+      container.innerHTML = keys.map(key => {
+        const meta = CLASSES_META[key];
+        const isActive = selectedClassFilter === key;
+        const activeClasses = isActive
+          ? `${meta.badgeBg} ${meta.badgeText} ring-2 ring-offset-1 ring-indigo-500 font-bold shadow-xs`
+          : `bg-slate-100 hover:bg-slate-200/80 text-slate-600 font-medium`;
+
+        return `
+          <button onclick="selectClassFilter('${key}')" class="px-3 py-1.5 rounded-xl text-xs transition-all flex items-center gap-1.5 ${activeClasses}">
+            <i class="fa-solid ${meta.icon}"></i>
+            <span>${meta.label}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectClassFilter(key) {
+      selectedClassFilter = key === 'all' ? 'all' : Number(key);
+      showOnlyMissed = false;
+      renderClassFilterPills();
+      renderStudyCards();
+      filterFlashcardsByClass();
+      renderTestQuestions();
+    }
+
+    // =========================================================================
+    // 6. STUDY GUIDE RENDERING & SEARCH
+    // =========================================================================
+    function filterStudyContent() {
+      renderStudyCards();
+    }
+
+    function renderStudyCards() {
+      const container = document.getElementById('studyCardsContainer');
+      const query = (document.getElementById('studySearchInput')?.value || '').trim().toLowerCase();
+
+      const filteredClasses = STUDY_DATA.filter(cls => {
+        if (selectedClassFilter !== 'all' && cls.classId !== selectedClassFilter) return false;
+        if (!query) return true;
+        // Search title, subtitle, sections, or customHtml
+        const inTitle = cls.title.toLowerCase().includes(query) || cls.subtitle.toLowerCase().includes(query);
+        const inSections = cls.sections && cls.sections.some(sec =>
+          sec.heading.toLowerCase().includes(query) ||
+          sec.items.some(item => item.toLowerCase().includes(query))
+        );
+        const inCustom = cls.customHtml && cls.customHtml.toLowerCase().includes(query);
+        return inTitle || inSections || inCustom;
+      });
+
+      if (filteredClasses.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white rounded-2xl border border-slate-200 p-10 text-center">
+            <i class="fa-solid fa-magnifying-glass text-3xl text-slate-300 mb-3"></i>
+            <h3 class="text-base font-bold text-slate-700">No matching study notes found</h3>
+            <p class="text-sm text-slate-500 mt-1">Try clearing your search filter or selecting "All Classes".</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filteredClasses.map(cls => {
+        const meta = CLASSES_META[cls.classId];
+        let bodyHtml = '';
+
+        if (cls.customHtml) {
+          bodyHtml = cls.customHtml;
+        } else if (cls.sections) {
+          bodyHtml = `
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              ${cls.sections.map(sec => `
+                <div class="bg-slate-50/80 rounded-xl p-4 border border-slate-200/80 flex flex-col">
+                  <h4 class="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2 pb-2 border-b border-slate-200/70">
+                    <i class="fa-solid ${sec.icon} ${sec.accent}"></i>
+                    <span>${sec.heading}</span>
+                  </h4>
+                  <ul class="space-y-2 flex-1">
+                    ${sec.items.map(phrase => {
+                      const escaped = phrase.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                      return `
+                        <li onclick="copyPhrase('${escaped}')" title="Click to copy phrase" class="group flex items-start justify-between gap-2 text-xs sm:text-sm text-slate-700 bg-white p-2.5 rounded-lg border border-slate-200/60 hover:border-indigo-300 hover:bg-indigo-50/30 cursor-pointer transition-all">
+                          <span class="leading-relaxed">${phrase}</span>
+                          <i class="fa-regular fa-copy text-slate-300 group-hover:text-indigo-500 mt-1 shrink-0 text-xs"></i>
+                        </li>
+                      `;
+                    }).join('')}
+                  </ul>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        }
+
+        return `
+          <article class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="p-5 sm:p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${meta.badgeBg} ${meta.badgeText}">${meta.short}</span>
+                  <span class="text-xs text-slate-400 font-medium">Click any phrase card to copy</span>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900">${cls.title}</h3>
+                <p class="text-xs sm:text-sm text-slate-500 mt-0.5">${cls.subtitle}</p>
+              </div>
+              <button onclick="practiceSingleClass(${cls.classId})" class="self-start sm:self-center shrink-0 px-3.5 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-pen-clip"></i> Test Class ${cls.classId}
+              </button>
+            </div>
+            <div class="p-5 sm:p-6">
+              ${bodyHtml}
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function practiceSingleClass(classId) {
+      selectClassFilter(classId);
+      switchMode('test');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function copyPhrase(text) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(`Copied: "${text.length > 42 ? text.slice(0, 42) + '...' : text}"`);
+      } catch (e) {
+        showToast('Phrase selected');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function showToast(msg) {
+      const banner = document.getElementById('toastBanner');
+      const msgEl = document.getElementById('toastMessage');
+      msgEl.textContent = msg;
+      banner.classList.remove('translate-y-20', 'opacity-0');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        banner.classList.add('translate-y-20', 'opacity-0');
+      }, 2400);
+    }
+
+    // =========================================================================
+    // 7. FLASHCARDS LOGIC
+    // =========================================================================
+    function filterFlashcardsByClass() {
+      activeFlashcards = selectedClassFilter === 'all'
+        ? [...FLASHCARDS_DATA]
+        : FLASHCARDS_DATA.filter(c => c.classId === selectedClassFilter);
+      currentCardIndex = 0;
+      isCardFlipped = false;
+      renderFlashcard();
+    }
+
+    function renderFlashcard() {
+      if (activeFlashcards.length === 0) return;
+      const card = activeFlashcards[currentCardIndex];
+      const meta = CLASSES_META[card.classId];
+
+      const inner = document.getElementById('flashcardInner');
+      if (isCardFlipped) {
+        inner.classList.add('rotate-y-180');
+      } else {
+        inner.classList.remove('rotate-y-180');
+      }
+
+      document.getElementById('flashcardCounter').textContent = `${currentCardIndex + 1} / ${activeFlashcards.length}`;
+      const badge = document.getElementById('fcClassBadge');
+      badge.className = `px-3 py-1 rounded-full text-xs font-bold ${meta.badgeBg} ${meta.badgeText}`;
+      badge.textContent = meta.short;
+
+      document.getElementById('fcCategoryLabel').textContent = card.cat;
+      document.getElementById('fcFrontText').textContent = card.front;
+      document.getElementById('fcBackText').textContent = card.back;
+      document.getElementById('fcExampleText').textContent = `"${card.example}"`;
+    }
+
+    function flipFlashcard() {
+      isCardFlipped = !isCardFlipped;
+      renderFlashcard();
+    }
+
+    function nextFlashcard() {
+      isCardFlipped = false;
+      currentCardIndex = (currentCardIndex + 1) % activeFlashcards.length;
+      renderFlashcard();
+    }
+
+    function prevFlashcard() {
+      isCardFlipped = false;
+      currentCardIndex = (currentCardIndex - 1 + activeFlashcards.length) % activeFlashcards.length;
+      renderFlashcard();
+    }
+
+    function shuffleFlashcards() {
+      for (let i = activeFlashcards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [activeFlashcards[i], activeFlashcards[j]] = [activeFlashcards[j], activeFlashcards[i]];
+      }
+      currentCardIndex = 0;
+      isCardFlipped = false;
+      renderFlashcard();
+      showToast('Flashcard deck shuffled!');
+    }
+
+    // =========================================================================
+    // 8. PRACTICE TEST ENGINE
+    // =========================================================================
+    function getFilteredQuestions() {
+      return TEST_QUESTIONS.filter(q => {
+        if (selectedClassFilter !== 'all' && q.classId !== selectedClassFilter) return false;
+        if (showOnlyMissed) {
+          const ans = userAnswers[q.id];
+          return ans !== undefined && ans !== q.correct;
+        }
+        return true;
+      });
+    }
+
+    function renderTestQuestions() {
+      const container = document.getElementById('testQuestionsContainer');
+      const questions = getFilteredQuestions();
+      document.getElementById('statShowing').textContent = questions.length;
+
+      if (questions.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white rounded-2xl border border-slate-200 p-10 text-center">
+            <i class="fa-solid fa-circle-check text-4xl text-emerald-500 mb-3"></i>
+            <h3 class="text-lg font-bold text-slate-800">No missed questions in this view!</h3>
+            <p class="text-sm text-slate-500 mt-1">Great job! Switch back to all questions or pick another class.</p>
+            <button onclick="showOnlyMissed = false; renderTestQuestions();" class="mt-4 px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-semibold">Show All Questions</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = questions.map((q, idx) => {
+        const meta = CLASSES_META[q.classId];
+        const selectedOpt = userAnswers[q.id];
+        const isAnswered = selectedOpt !== undefined;
+        const isCorrect = isAnswered && selectedOpt === q.correct;
+
+        const optionsHtml = q.options.map((optText, optIdx) => {
+          let btnStyle = "bg-slate-50 hover:bg-indigo-50/60 border-slate-200 text-slate-700";
+          let iconHtml = `<span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs font-bold text-slate-500 shrink-0">${String.fromCharCode(65 + optIdx)}</span>`;
+
+          if (isAnswered) {
+            if (optIdx === q.correct) {
+              btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-950 font-semibold ring-1 ring-emerald-500";
+              iconHtml = `<span class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-check"></i></span>`;
+            } else if (optIdx === selectedOpt) {
+              btnStyle = "bg-rose-50 border-rose-400 text-rose-950 font-medium";
+              iconHtml = `<span class="w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-xmark"></i></span>`;
+            } else {
+              btnStyle = "bg-slate-50/50 border-slate-200/70 text-slate-400 opacity-75";
+            }
+          }
+
+          return `
+            <button onclick="selectTestOption(${q.id}, ${optIdx})" class="w-full text-left p-3.5 rounded-xl border transition-all flex items-center gap-3 ${btnStyle}">
+              ${iconHtml}
+              <span class="text-sm leading-snug">${optText}</span>
+            </button>
+          `;
+        }).join('');
+
+        const feedbackHtml = isAnswered ? `
+          <div class="mt-4 p-3.5 rounded-xl text-xs sm:text-sm flex items-start gap-2.5 ${isCorrect ? 'bg-emerald-50/90 text-emerald-900 border border-emerald-200' : 'bg-amber-50/90 text-amber-950 border border-amber-200'}">
+            <i class="fa-solid ${isCorrect ? 'fa-circle-check text-emerald-600' : 'fa-circle-info text-amber-600'} mt-0.5 text-base"></i>
+            <div>
+              <span class="font-bold">${isCorrect ? 'Correct!' : 'Review Note:'}</span> ${q.explanation}
+            </div>
+          </div>
+        ` : '';
+
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 shadow-sm transition-all">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-extrabold text-slate-400">Q${idx + 1}</span>
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${meta.badgeBg} ${meta.badgeText}">${meta.short}</span>
+                <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full">${q.type}</span>
+              </div>
+              ${isAnswered ? `<span class="text-xs font-bold ${isCorrect ? 'text-emerald-600' : 'text-rose-600'}">${isCorrect ? '+1 Point' : 'Missed'}</span>` : ''}
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-4 leading-snug">${q.question}</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+              ${optionsHtml}
+            </div>
+            ${feedbackHtml}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectTestOption(questionId, optionIndex) {
+      userAnswers[questionId] = optionIndex;
+      renderTestQuestions();
+      updateProgressStats();
+    }
+
+    function updateProgressStats() {
+      const total = TEST_QUESTIONS.length;
+      let answered = 0;
+      let correct = 0;
+      let incorrect = 0;
+
+      TEST_QUESTIONS.forEach(q => {
+        if (userAnswers[q.id] !== undefined) {
+          answered++;
+          if (userAnswers[q.id] === q.correct) {
+            correct++;
+          } else {
+            incorrect++;
+          }
+        }
+      });
+
+      const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+
+      // Update Test Dashboard Stats
+      document.getElementById('statCorrect').textContent = correct;
+      document.getElementById('statIncorrect').textContent = incorrect;
+      document.getElementById('statAccuracy').textContent = `${accuracy}%`;
+
+      // Update Header Progress Indicators
+      document.getElementById('answeredCount').textContent = answered;
+      document.getElementById('totalQuestionsCount').textContent = total;
+      document.getElementById('accuracyBadge').textContent = `${accuracy}%`;
+      document.getElementById('progressCircleText').textContent = `${accuracy}%`;
+      document.getElementById('mobileScoreBadge').textContent = `${correct}/${total} (${accuracy}%)`;
+
+      // Toggle Retry Missed button
+      const retryBtn = document.getElementById('retryMissedBtn');
+      const missedCountEl = document.getElementById('missedCount');
+      if (incorrect > 0) {
+        retryBtn.classList.remove('hidden');
+        missedCountEl.textContent = incorrect;
+      } else {
+        retryBtn.classList.add('hidden');
+        showOnlyMissed = false;
+      }
+    }
+
+    function filterMissedQuestions() {
+      showOnlyMissed = !showOnlyMissed;
+      renderTestQuestions();
+      showToast(showOnlyMissed ? 'Showing only missed questions' : 'Showing all questions');
+    }
+
+    function resetAllTests() {
+      userAnswers = {};
+      showOnlyMissed = false;
+      renderTestQuestions();
+      updateProgressStats();
+      showToast('All test answers cleared!');
+    }
+  </script>
+</body>
+</html>
